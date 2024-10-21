@@ -1,0 +1,11 @@
+.banner-img{
+    height: 400px;
+    width: 100%;
+}
+h4{
+    font-style: normal;
+    font-weight: 700;
+    line-height: 135%;
+    color: #97281d;
+    margin: 20px;
+}

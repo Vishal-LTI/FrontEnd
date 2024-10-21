@@ -1,0 +1,15 @@
+.nav-bg{
+    background-color: #db620a;
+}
+
+.nav-title{
+    color: #ffffff;
+    font-size: larger;
+    padding-left: 20px;
+}
+
+.nav-subtitle{
+    color: #ffffff;
+    font-size: medium;
+    padding-left: 5px;
+}
