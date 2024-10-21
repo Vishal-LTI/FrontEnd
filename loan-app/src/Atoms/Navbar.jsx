@@ -13,9 +13,7 @@ const Navbar = () => {
             <li className="nav-item">
               <a className="nav-link" href="/login" style={{ color: '#ffffff' }}>Login</a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/signup" style={{ color: '#ffffff' }}>Signup</a>
-            </li>
+           
           </ul>
         </div>
       </div>
