@@ -2,10 +2,10 @@ import React from 'react';
 
 const Register = () => {
   return (
-    <div className="container" style={{ maxWidth: '400px', marginTop: '50px' }}>
+    <div className="container" style={{ maxWidth: '400px', marginTop: '80px' }}>
             
       <div className="card shadow">
-      <h5 className="card-title text-center" style={{ color: '#ffffff', background:'#db620a', borderRadius:'5px 5px 0px 0px', padding:'10px'}}>Register</h5>
+      <h5 className="card-title text-center" style={{ color: '#ffffff', background:'#db0011', borderRadius:'5px 5px 0px 0px', padding:'10px'}}>Register</h5>
         <div className="card-body">
          
           <form>
@@ -26,7 +26,7 @@ const Register = () => {
               <input type="password" className="form-control" id="pin" placeholder="Enter PIN" />
             </div>
            
-            <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#FF7F50', borderColor: '#FF7F50' }}>Register</button>
+            <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: '#db0011', borderColor: '#db0011', width: '150px' }}>Register</button>
           </form>
         </div>
       </div>
