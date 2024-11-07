@@ -34,7 +34,7 @@ const PrepaymentCalculator = () => {
     const principal = parseFloat(amount);
     const prepaymentAmount = parseFloat(prepayment);
     const newPrincipal = principal - prepaymentAmount;
-    const tenureYears = parseFloat(tenure);
+    const tenureYears = parseFloat(tenure); 
 
     const emiValue = calculateEMI(newPrincipal, tenureYears);
     setEmi(emiValue.toFixed(0));
@@ -205,29 +205,29 @@ const PrepaymentCalculator = () => {
           </div>
         </div>
         <div className="mt-5 mb-4">
-        <h3>Most Popular Calculators</h3>
-        <ul style={{ display: "flex", justifyContent: "space-between" }}>
-          <li>
-            <Link to="/home-loan-emicalculator">Home Loan Calculator</Link>
-          </li>
-          <li>
-            <Link to="/car-loan-emicalculator">Car Loan Calculator</Link>
-          </li>
-          <li>
-            <Link to="/personal-loan-emicalculator">
-              Personal Loan Calculator
-            </Link>
-          </li>
-          <li>
-            <Link to="/gold-loan-emicalculator">Gold Loan Calculator</Link>
-          </li>
-          <li>
-            <Link to="/land-loan-emicalculator">Land Loan Calculator</Link>
-          </li>
-        </ul>
+          <h3>Most Popular Calculators</h3>
+          <ul style={{ display: "flex", justifyContent: "space-between" }}>
+            <li>
+              <Link to="/home-loan-emicalculator">Home Loan Calculator</Link>
+            </li>
+            <li>
+              <Link to="/car-loan-emicalculator">Car Loan Calculator</Link>
+            </li>
+            <li>
+              <Link to="/personal-loan-emicalculator">
+                Personal Loan Calculator
+              </Link>
+            </li>
+            <li>
+              <Link to="/gold-loan-emicalculator">Gold Loan Calculator</Link>
+            </li>
+            <li>
+              <Link to="/land-loan-emicalculator">Land Loan Calculator</Link>
+            </li>
+          </ul>
+        </div>
       </div>
-      </div>
-     
+
       <Footer />
     </>
   );

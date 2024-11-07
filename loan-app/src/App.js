@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Home />} />
-
+ 
 {/* Calculator routes */}
         <Route path="/home-loan-emicalculator" element={<EMICalculator title="Home Loan EMI Calculator" interestRate='8.5' minTenuare="10" maxTenuare="30"/>} />
         <Route path="/car-loan-emicalculator" element={<EMICalculator title="Car Loan EMI Calculator" interestRate='9' minTenuare="1" maxTenuare="7"/>} />

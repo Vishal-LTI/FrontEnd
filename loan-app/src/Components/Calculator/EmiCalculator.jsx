@@ -134,7 +134,7 @@ const EMICalculator = ({ interestRate, minTenuare, maxTenuare, title }) => {
               </div>
             )}
           </div>
-          <div style={{ marginTop: "50px", width:"30%" }}>
+          <div style={{ marginTop: "50px", width: "30%" }}>
             <p>
               <b>EMI:</b> {emi} per month
             </p>

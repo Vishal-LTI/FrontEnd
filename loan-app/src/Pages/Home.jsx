@@ -13,8 +13,8 @@ const accordionData = [
       "Eligible borrowers can avail Home Loan with an attractive interest rate, lower Equated Monthly Instalments (EMIs) and no pre-payment charges on floating Home Loan interest rates. Extended loan tenures up to 30 years with easy repayment options.",
   },
   {
-    btnTitle:'EMI Calculator',
-    btnUrl:"/emicalculator",
+    btnTitle: "EMI Calculator",
+    btnUrl: "/emicalculator",
     title: "Home Loan Eligibility Calculator",
     description:
       "Your dream home is now within your reach with ICICI Bank Home Loan. We offer higher loan amount on your income. You can check this through our Home Loan eligibility calculator. Your Housing Loan eligibility can be further enhanced by including income of the co-applicant(s) in your Home Loan. Home Loan eligibility calculator calculates your eligibility after considering various factors including monthly income, fixed monthly obligation, current age, retirement age etc. Your Home Loan eligibility can also be considered an indicator of your Home Loan affordability.",
@@ -58,39 +58,39 @@ const loanTypesData = [
   {
     img: "../zero_foreclosure.jpg",
     title: "Home Loan",
-    btnText:"Calculate",
-    link:"/home-loan-emicalculator",
+    btnText: "Calculate",
+    link: "/home-loan-emicalculator",
     description:
       "Transfer your Home Loan to ICICI Bank with lower ROI and reduced Home Loan EMIs",
   },
   {
     img: "../interest_rate.png",
     title: "Car Loan",
-    btnText:"Calculate",
-    link:"/car-loan-emicalculator",
+    btnText: "Calculate",
+    link: "/car-loan-emicalculator",
     description:
       "Meet personal and business requirements with a Home Loan top-up",
   },
   {
     img: "../approved_projects.png",
     title: "Personal Loan",
-    btnText:"Calculate",
-    link:"/personal-loan-emicalculator",
+    btnText: "Calculate",
+    link: "/personal-loan-emicalculator",
     description:
       "An overdraft-based Home Loan can maximize savings on your Home Loan interest",
   },
   {
     img: "../digital_sanction.png",
     title: "Gold Loan",
-    btnText:"Calculate",
-    link:"/gold-loan-emicalculator",
+    btnText: "Calculate",
+    link: "/gold-loan-emicalculator",
     description: "Renovate your home with ICICI Bank Home Improvement Loan",
   },
   {
     img: "../zero_foreclosure.jpg",
     title: "Land Loan",
-    btnText:"Calculate",
-    link:"/land-loan-emicalculator",
+    btnText: "Calculate",
+    link: "/land-loan-emicalculator",
     description: "Acquire land and build your dream home with a Land Loan",
   },
 ];

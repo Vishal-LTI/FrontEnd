@@ -54,154 +54,160 @@ const UpdateProfilePage = () => {
 
   return (
     <>
-    <Navbar/>
-    <div className="container my-5">
-      <h3 className="card-title text-center mb-5" style={{ color: "#FF7F50" }}>
-        Update Profile Information
-      </h3>
-      <form onSubmit={handleSubmit}>
-      <div className="row">
-        <div className="col-md-6 d-flex justify-content-center">
-          <div className="card p-4">
-            <div className="position-relative">
-              {userProfile.photo ? (
-                <>
-                  <img
-                    src={userProfile.photo}
-                    alt="User Photo"
-                    className="img-fluid rounded-circle"
-                    style={{
-                      maxWidth: "250px",
-                      height: "250px",
-                      marginLeft: "120px",
-                    }}
-                  />
-                  <button
-                    className="btn btn-danger position-absolute top-0 end-0"
-                    onClick={handleImageRemove}
-                    style={{ borderRadius: "50%" }}
-                  >
-                    ×
-                  </button>
-                </>
-              ) : (
-                <>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    style={{ display: "none" }}
-                    id="photoUpload"
-                  />
-                  <label
-                    htmlFor="photoUpload"
-                    className="btn btn-primary"
-                    style={{ borderRadius: "50%", marginLeft: "120px" }}
-                  >
-                    +
-                  </label>
-                </>
-              )}
+      <Navbar />
+      <div className="container my-5">
+        <h3
+          className="card-title text-center mb-5"
+          style={{ color: "#FF7F50" }}
+        >
+          Update Profile Information
+        </h3>
+        <form onSubmit={handleSubmit}>
+          <div className="row">
+            <div className="col-md-6 d-flex justify-content-center">
+              <div className="card p-4">
+                <div className="position-relative">
+                  {userProfile.photo ? (
+                    <>
+                      <img
+                        src={userProfile.photo}
+                        alt="User Photo"
+                        className="img-fluid rounded-circle"
+                        style={{
+                          maxWidth: "250px",
+                          height: "250px",
+                          marginLeft: "120px",
+                        }}
+                      />
+                      <button
+                        className="btn btn-danger position-absolute top-0 end-0"
+                        onClick={handleImageRemove}
+                        style={{ borderRadius: "50%" }}
+                      >
+                        ×
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        style={{ display: "none" }}
+                        id="photoUpload"
+                      />
+                      <label
+                        htmlFor="photoUpload"
+                        className="btn btn-primary"
+                        style={{ borderRadius: "50%", marginLeft: "120px" }}
+                      >
+                        +
+                      </label>
+                    </>
+                  )}
+                </div>
+                <div className="mb-4">
+                  <h5 className="title">Personal Details</h5>
+                  <div className="row">
+                    {Object.entries(userProfile)
+                      .filter(([key]) => key !== "photo")
+                      .map(([key, value]) => (
+                        <div className="col-md-6 mb-3" key={key}>
+                          <label
+                            className="form-label"
+                            style={{ fontWeight: "bold" }}
+                          >
+                            {key.charAt(0).toUpperCase() +
+                              key.slice(1).replace(/([A-Z])/g, " $1")}
+                            :
+                          </label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            name={key}
+                            value={value}
+                            onChange={(e) => handleInputChange(e, "user")}
+                          />
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="mb-4">
-                <h5 className="title">Personal Details</h5>
-                <div className="row">
-                  {Object.entries(userProfile)
-                    .filter(([key]) => key !== "photo")
-                    .map(([key, value]) => (
-                      <div className="col-md-6 mb-3" key={key}>
-                        <label
-                          className="form-label"
-                          style={{ fontWeight: "bold" }}
-                        >
-                          {key.charAt(0).toUpperCase() +
-                            key.slice(1).replace(/([A-Z])/g, " $1")}
-                          :
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name={key}
-                          value={value}
-                          onChange={(e) => handleInputChange(e, "user")}
-                        />
-                      </div>
-                    ))}
+            <div className="col-md-6">
+              <div className="card p-4">
+                {/* <form onSubmit={handleSubmit}> */}
+                <div className="mb-4">
+                  <h5 className="title">Company Details</h5>
+                  <div className="row">
+                    {Object.entries(userProfile)
+                      .filter(([key]) => key !== "photo")
+                      .map(([key, value]) => (
+                        <div className="col-md-6 mb-3" key={key}>
+                          <label
+                            className="form-label"
+                            style={{ fontWeight: "bold" }}
+                          >
+                            {key.charAt(0).toUpperCase() +
+                              key.slice(1).replace(/([A-Z])/g, " $1")}
+                            :
+                          </label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            name={key}
+                            value={value}
+                            onChange={(e) => handleInputChange(e, "user")}
+                          />
+                        </div>
+                      ))}
+                  </div>
                 </div>
+                <div className="mb-4">
+                  <h5 className="title">Contact Details</h5>
+                  <div className="row">
+                    {Object.entries(userProfile)
+                      .filter(([key]) => key !== "photo")
+                      .map(([key, value]) => (
+                        <div className="col-md-6 mb-3" key={key}>
+                          <label
+                            className="form-label"
+                            style={{ fontWeight: "bold" }}
+                          >
+                            {key.charAt(0).toUpperCase() +
+                              key.slice(1).replace(/([A-Z])/g, " $1")}
+                            :
+                          </label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            name={key}
+                            value={value}
+                            onChange={(e) => handleInputChange(e, "user")}
+                          />
+                        </div>
+                      ))}
+                  </div>
+                </div>
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    style={{
+                      backgroundColor: "#FF7F50",
+                      borderColor: "#FF7F50",
+                    }}
+                  >
+                    Update Profile
+                  </button>
+                </div>
+                {/* </form> */}
               </div>
+            </div>
           </div>
-        </div>
-        <div className="col-md-6">
-          <div className="card p-4">
-            {/* <form onSubmit={handleSubmit}> */}
-              <div className="mb-4">
-                <h5 className="title">Company Details</h5>
-                <div className="row">
-                  {Object.entries(userProfile)
-                    .filter(([key]) => key !== "photo")
-                    .map(([key, value]) => (
-                      <div className="col-md-6 mb-3" key={key}>
-                        <label
-                          className="form-label"
-                          style={{ fontWeight: "bold" }}
-                        >
-                          {key.charAt(0).toUpperCase() +
-                            key.slice(1).replace(/([A-Z])/g, " $1")}
-                          :
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name={key}
-                          value={value}
-                          onChange={(e) => handleInputChange(e, "user")}
-                        />
-                      </div>
-                    ))}
-                </div>
-              </div>
-              <div className="mb-4">
-                <h5 className="title">Contact Details</h5>
-                <div className="row">
-                  {Object.entries(userProfile)
-                    .filter(([key]) => key !== "photo")
-                    .map(([key, value]) => (
-                      <div className="col-md-6 mb-3" key={key}>
-                        <label
-                          className="form-label"
-                          style={{ fontWeight: "bold" }}
-                        >
-                          {key.charAt(0).toUpperCase() +
-                            key.slice(1).replace(/([A-Z])/g, " $1")}
-                          :
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          name={key}
-                          value={value}
-                          onChange={(e) => handleInputChange(e, "user")}
-                        />
-                      </div>
-                    ))}
-                </div>
-              </div>
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  style={{ backgroundColor: "#FF7F50", borderColor: "#FF7F50" }}
-                >
-                  Update Profile
-                </button>
-              </div>
-            {/* </form> */}
-          </div>
-        </div>
+        </form>
       </div>
-      </form>
-    </div>
-    <Footer/>
+      <Footer />
     </>
   );
 };
