@@ -59,6 +59,7 @@ const loanTypesData = [
     img: "../zero_foreclosure.jpg",
     title: "Home Loan",
     btnText:"Calculate",
+    link:"/home-loan-emicalculator",
     description:
       "Transfer your Home Loan to ICICI Bank with lower ROI and reduced Home Loan EMIs",
   },
@@ -66,6 +67,7 @@ const loanTypesData = [
     img: "../interest_rate.png",
     title: "Car Loan",
     btnText:"Calculate",
+    link:"/car-loan-emicalculator",
     description:
       "Meet personal and business requirements with a Home Loan top-up",
   },
@@ -73,6 +75,7 @@ const loanTypesData = [
     img: "../approved_projects.png",
     title: "Personal Loan",
     btnText:"Calculate",
+    link:"/personal-loan-emicalculator",
     description:
       "An overdraft-based Home Loan can maximize savings on your Home Loan interest",
   },
@@ -80,12 +83,14 @@ const loanTypesData = [
     img: "../digital_sanction.png",
     title: "Gold Loan",
     btnText:"Calculate",
+    link:"/gold-loan-emicalculator",
     description: "Renovate your home with ICICI Bank Home Improvement Loan",
   },
   {
     img: "../zero_foreclosure.jpg",
     title: "Land Loan",
     btnText:"Calculate",
+    link:"/land-loan-emicalculator",
     description: "Acquire land and build your dream home with a Land Loan",
   },
 ];
@@ -135,6 +140,7 @@ const Home = () => {
             img={loanType.img}
             title={loanType.title}
             description={loanType.description}
+            link={loanType.link}
           />
         ))}
       </div>

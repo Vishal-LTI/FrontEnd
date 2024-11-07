@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto"; // Ensure you have this import for Chart.js to work correctly
 import "../../Styles/calculator.css";
-
+import Navbar from "../../Atoms/Navbar";
+import Footer from "../../Atoms/Footer";
+import { Link } from "react-router-dom";
 const PrepaymentCalculator = () => {
   const [amount, setAmount] = useState(0);
   const [rate, setRate] = useState(8.5);
@@ -21,7 +23,9 @@ const PrepaymentCalculator = () => {
     const numberOfPayments = tenureYears * 12;
 
     return (
-      (principal * monthlyInterest * Math.pow(1 + monthlyInterest, numberOfPayments)) /
+      (principal *
+        monthlyInterest *
+        Math.pow(1 + monthlyInterest, numberOfPayments)) /
       (Math.pow(1 + monthlyInterest, numberOfPayments) - 1)
     );
   };
@@ -35,13 +39,17 @@ const PrepaymentCalculator = () => {
     const emiValue = calculateEMI(newPrincipal, tenureYears);
     setEmi(emiValue.toFixed(0));
 
-    const totalInterestWithoutPrepayment = calculateEMI(principal, tenureYears) * tenureYears * 12 - principal;
-    const totalInterestWithPrepayment = emiValue * tenureYears * 12 - newPrincipal;
+    const totalInterestWithoutPrepayment =
+      calculateEMI(principal, tenureYears) * tenureYears * 12 - principal;
+    const totalInterestWithPrepayment =
+      emiValue * tenureYears * 12 - newPrincipal;
 
     setInterestAmount(totalInterestWithPrepayment.toFixed(0));
     setTotal((newPrincipal + totalInterestWithPrepayment).toFixed(0));
     setOutStandingAmount(newPrincipal);
-    setSave((totalInterestWithoutPrepayment - totalInterestWithPrepayment).toFixed(0));
+    setSave(
+      (totalInterestWithoutPrepayment - totalInterestWithPrepayment).toFixed(0)
+    );
 
     setChartData({
       labels: ["Principal", "Interest"],
@@ -55,121 +63,173 @@ const PrepaymentCalculator = () => {
   };
 
   return (
-    <div className="container">
-      <h2 className="text-center my-4">Prepayment Calculator</h2>
-      <div className="box">
-        <div className="card p-4 first">
-          <div className="form-group mb-3">
-            <div className="box">
-              <label htmlFor="loanAmount" className="first">Loan Amount:</label>
+    <>
+      <Navbar />
+      <div className="container">
+        <h2 className="text-center my-4">Prepayment Calculator</h2>
+        <div className="box">
+          <div className="card p-4 first">
+            <div className="form-group mb-3">
+              <div className="box">
+                <label htmlFor="loanAmount" className="first">
+                  Loan Amount:
+                </label>
+                <input
+                  type="number"
+                  className="form-control first"
+                  id="loanAmount"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                />
+              </div>
               <input
-                type="number"
-                className="form-control first"
-                id="loanAmount"
+                type="range"
+                className="form-range mt-2"
+                id="loanAmountRange"
+                min="10000"
+                max="1000000"
+                step="1000"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
               />
             </div>
-            <input
-              type="range"
-              className="form-range mt-2"
-              id="loanAmountRange"
-              min="10000"
-              max="1000000"
-              step="1000"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-            />
-          </div>
-          <div className="form-group mb-3">
-            <div className="box">
-              <label htmlFor="interestRate" className="first">Interest Rate (Annual %):</label>
+            <div className="form-group mb-3">
+              <div className="box">
+                <label htmlFor="interestRate" className="first">
+                  Interest Rate (Annual %):
+                </label>
+                <input
+                  type="number"
+                  className="form-control first"
+                  id="interestRate"
+                  value={rate}
+                  onChange={(e) => setRate(e.target.value)}
+                />
+              </div>
               <input
-                type="number"
-                className="form-control first"
-                id="interestRate"
+                type="range"
+                className="form-range mt-2"
+                id="interestRateRange"
+                min="1"
+                max="20"
+                step="0.1"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
               />
             </div>
-            <input
-              type="range"
-              className="form-range mt-2"
-              id="interestRateRange"
-              min="1"
-              max="20"
-              step="0.1"
-              value={rate}
-              onChange={(e) => setRate(e.target.value)}
-            />
-          </div>
-          <div className="form-group mb-3">
-            <div className="box">
-              <label htmlFor="tenure" className="first">Tenure (Years):</label>
+            <div className="form-group mb-3">
+              <div className="box">
+                <label htmlFor="tenure" className="first">
+                  Tenure (Years):
+                </label>
+                <input
+                  type="number"
+                  className="form-control first"
+                  id="tenure"
+                  value={tenure}
+                  onChange={(e) => setTenure(e.target.value)}
+                />
+              </div>
               <input
-                type="number"
-                className="form-control first"
-                id="tenure"
+                type="range"
+                className="form-range mt-2"
+                id="tenureRange"
+                min="1"
+                max="30"
+                step="1"
                 value={tenure}
                 onChange={(e) => setTenure(e.target.value)}
               />
             </div>
-            <input
-              type="range"
-              className="form-range mt-2"
-              id="tenureRange"
-              min="1"
-              max="30"
-              step="1"
-              value={tenure}
-              onChange={(e) => setTenure(e.target.value)}
-            />
-          </div>
-          <div className="form-group mb-3">
-            <div className="box">
-              <label htmlFor="prepaymentAmount" className="first">Prepayment Amount:</label>
+            <div className="form-group mb-3">
+              <div className="box">
+                <label htmlFor="prepaymentAmount" className="first">
+                  Prepayment Amount:
+                </label>
+                <input
+                  type="number"
+                  className="form-control first"
+                  id="prepaymentAmount"
+                  value={prepayment}
+                  onChange={(e) => setPrepayment(e.target.value)}
+                />
+              </div>
               <input
-                type="number"
-                className="form-control first"
-                id="prepaymentAmount"
+                type="range"
+                className="form-range mt-2"
+                id="prepaymentAmountRange"
+                min="0"
+                max={amount}
+                step="1000"
                 value={prepayment}
                 onChange={(e) => setPrepayment(e.target.value)}
               />
             </div>
-            <input
-              type="range"
-              className="form-range mt-2"
-              id="prepaymentAmountRange"
-              min="0"
-              max={amount}
-              step="1000"
-              value={prepayment}
-              onChange={(e) => setPrepayment(e.target.value)}
-            />
+            <button
+              className="btn btn-primary w-100"
+              onClick={calculatePrepayment}
+            >
+              Calculate EMI after Prepayment
+            </button>
           </div>
-          <button className="btn btn-primary w-100" onClick={calculatePrepayment}>
-            Calculate EMI after Prepayment
-          </button>
-          <div style={{ marginTop: "50px" }}>
-            <p><b>EMI:</b> {emi} per month</p>
-            <p><b>Principal Amount:</b> {amount}</p>
-            <p><b>Outstanding Amount:</b> {outStandingAmount}</p>
-            <p><b>Total Interest:</b> {interestAmount}</p>
-            <p><b>Interest Saved:</b> {save}</p>
-            <p><b>Total Amount:</b> {total}</p>
-          </div>
-        </div>
-        <div style={{ width: "50%" }}>
-          {emi > 0 && (
-            <div className="text-center mt-4">
-              <div style={{ width: "60%", marginLeft: "150px" }}>
-                <Doughnut data={chartData} />
+          <div style={{ width: "50%" }}>
+            {emi > 0 && (
+              <div className="text-center mt-4">
+                <div style={{ width: "60%", marginLeft: "50px" }}>
+                  <Doughnut data={chartData} />
+                </div>
               </div>
+            )}
+          </div>
+          <div>
+            <div style={{ marginTop: "50px", width: "100%" }}>
+              <p>
+                <b>EMI:</b> {emi} per month
+              </p>
+              <p>
+                <b>Principal Amount:</b> {amount}
+              </p>
+              <p>
+                <b>Outstanding Amount:</b> {outStandingAmount}
+              </p>
+              <p>
+                <b>Total Interest:</b> {interestAmount}
+              </p>
+              <p>
+                <b>Interest Saved:</b> {save}
+              </p>
+              <p>
+                <b>Total Amount:</b> {total}
+              </p>
             </div>
-          )}
+          </div>
         </div>
+        <div className="mt-5 mb-4">
+        <h3>Most Popular Calculators</h3>
+        <ul style={{ display: "flex", justifyContent: "space-between" }}>
+          <li>
+            <Link to="/home-loan-emicalculator">Home Loan Calculator</Link>
+          </li>
+          <li>
+            <Link to="/car-loan-emicalculator">Car Loan Calculator</Link>
+          </li>
+          <li>
+            <Link to="/personal-loan-emicalculator">
+              Personal Loan Calculator
+            </Link>
+          </li>
+          <li>
+            <Link to="/gold-loan-emicalculator">Gold Loan Calculator</Link>
+          </li>
+          <li>
+            <Link to="/land-loan-emicalculator">Land Loan Calculator</Link>
+          </li>
+        </ul>
       </div>
-    </div>
+      </div>
+     
+      <Footer />
+    </>
   );
 };
 

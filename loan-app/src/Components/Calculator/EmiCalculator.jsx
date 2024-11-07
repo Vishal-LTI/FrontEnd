@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto"; // Ensure you have this import for Chart.js to work correctly
 import "../../Styles/calculator.css";
-const EMICalculator = ({interestRate, minTenuare, maxTenuare, title}) => {
+import Navbar from "../../Atoms/Navbar";
+import { Link } from "react-router-dom";
+import Footer from "../../Atoms/Footer";
+const EMICalculator = ({ interestRate, minTenuare, maxTenuare, title }) => {
   const [amount, setAmount] = useState(0);
   const [rate, setRate] = useState(interestRate);
   const [tenure, setTenure] = useState(0);
@@ -39,84 +42,99 @@ const EMICalculator = ({interestRate, minTenuare, maxTenuare, title}) => {
   };
 
   return (
-    <div className="container">
-      <h2 className="text-center my-4">{title}</h2>
-      <div className="box">
-        <div className="card p-4 first">
-          <div className="form-group mb-3">
-            <div className="box">
-              <label htmlFor="loanAmount" className="first">
-                Loan Amount:
-              </label>
+    <>
+      <Navbar />
+
+      <div className="container">
+        <h2 className="text-center my-4">{title}</h2>
+        <div className="box">
+          <div className="card p-4 first">
+            <div className="form-group mb-3">
+              <div className="box">
+                <label htmlFor="loanAmount" className="first">
+                  Loan Amount:
+                </label>
+                <input
+                  type="number"
+                  className="form-control first"
+                  id="loanAmount"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                />
+              </div>
               <input
-                type="number"
-                className="form-control first"
-                id="loanAmount"
+                type="range"
+                className="form-range mt-2"
+                id="loanAmountRange"
+                min="10000"
+                max="1000000"
+                step="1000"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
               />
             </div>
-            <input
-              type="range"
-              className="form-range mt-2"
-              id="loanAmountRange"
-              min="10000"
-              max="1000000"
-              step="1000"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-            />
-          </div>
-          <div className="form-group mb-3">
-            <div className=" box">
-              <label htmlFor="interestRate" className="first">
-                Interest Rate (Annual %):
-              </label>
+            <div className="form-group mb-3">
+              <div className=" box">
+                <label htmlFor="interestRate" className="first">
+                  Interest Rate (Annual %):
+                </label>
+                <input
+                  type="number"
+                  className="form-control first"
+                  id="interestRate"
+                  value={rate}
+                  onChange={(e) => setRate(e.target.value)}
+                />
+              </div>
               <input
-                type="number"
-                className="form-control first"
-                id="interestRate"
+                type="range"
+                className="form-range mt-2"
+                id="interestRateRange"
+                min="1"
+                max="20"
+                step="0.1"
                 value={rate}
                 onChange={(e) => setRate(e.target.value)}
               />
             </div>
-            <input
-              type="range"
-              className="form-range mt-2"
-              id="interestRateRange"
-              min="1"
-              max="20"
-              step="0.1"
-              value={rate}
-              onChange={(e) => setRate(e.target.value)}
-            />
-          </div>
-          <div className="form-group mb-3">
-            <div className="box">
-            <label htmlFor="tenure" className="first">Tenure (Years):</label>
-            <input
-              type="number"
-              className="form-control first"
-              id="tenure"
-              value={tenure}
-              onChange={(e) => setTenure(e.target.value)}
-            />
+            <div className="form-group mb-3">
+              <div className="box">
+                <label htmlFor="tenure" className="first">
+                  Tenure (Years):
+                </label>
+                <input
+                  type="number"
+                  className="form-control first"
+                  id="tenure"
+                  value={tenure}
+                  onChange={(e) => setTenure(e.target.value)}
+                />
+              </div>
+              <input
+                type="range"
+                className="form-range mt-2"
+                id="tenureRange"
+                min={minTenuare}
+                max={maxTenuare}
+                step="1"
+                value={tenure}
+                onChange={(e) => setTenure(e.target.value)}
+              />
             </div>
-            <input
-              type="range"
-              className="form-range mt-2"
-              id="tenureRange"
-              min={minTenuare}
-              max={maxTenuare}
-              step="1"
-              value={tenure}
-              onChange={(e) => setTenure(e.target.value)}
-            />
+            <button className="btn btn-primary w-100" onClick={calculateEMI}>
+              Calculate EMI
+            </button>
           </div>
-          <button className="btn btn-primary w-100" onClick={calculateEMI}>
-            Calculate EMI
-          </button>
-          <div style={{ marginTop: "50px" }}>
+          <div style={{ width: "50%" }}>
+            {emi > 0 && (
+              <div className="text-center mt-4">
+                <div style={{ width: "60%", marginLeft: "50px" }}>
+                  <Doughnut data={chartData} />
+                </div>
+              </div>
+            )}
+          </div>
+          <div style={{ marginTop: "50px", width:"30%" }}>
             <p>
               <b>EMI:</b> {emi} per month
             </p>
@@ -131,17 +149,31 @@ const EMICalculator = ({interestRate, minTenuare, maxTenuare, title}) => {
             </p>
           </div>
         </div>
-        <div style={{ width: "50%" }}>
-          {emi > 0 && (
-            <div className="text-center mt-4">
-              <div style={{ width: "60%", marginLeft: "150px" }}>
-                <Doughnut data={chartData} />
-              </div>
-            </div>
-          )}
+        <div className="mt-5 mb-4">
+          <h3>Most Popular Calculators</h3>
+          <ul style={{ display: "flex", justifyContent: "space-between" }}>
+            <li>
+              <Link to="/home-loan-emicalculator">Home Loan Calculator</Link>
+            </li>
+            <li>
+              <Link to="/car-loan-emicalculator">Car Loan Calculator</Link>
+            </li>
+            <li>
+              <Link to="/personal-loan-emicalculator">
+                Personal Loan Calculator
+              </Link>
+            </li>
+            <li>
+              <Link to="/gold-loan-emicalculator">Gold Loan Calculator</Link>
+            </li>
+            <li>
+              <Link to="/land-loan-emicalculator">Land Loan Calculator</Link>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

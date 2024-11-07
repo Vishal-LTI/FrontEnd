@@ -25,7 +25,7 @@ const Login = () => {
                     <button type="submit" className="btn btn-primary w-100" style={{ backgroundColor: "#FF7F50", borderColor: "#FF7F50" }}>Login</button>
                   </form>
                   <div className="mt-3 text-center">
-                    <p>Not registered? <Link to="/signup" style={{ color: "#FF7F50" }}>Sign up here</Link></p>
+                    <p>Not registered? <Link to="/" style={{ color: "#FF7F50" }}>Sign up here</Link></p>
                   </div>
                 </div>
               </div>
