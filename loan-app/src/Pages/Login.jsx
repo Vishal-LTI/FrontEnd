@@ -1,61 +1,65 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import "../Styles/login.css"; // Assuming you have some custom styles
+import PrimaryButton from "../Atoms/PrimaryButton";
 
 const Login = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const onSubmit = (data) => {
+    console.log("Login Data: ", data);
+    // handle login logic here
+  };
+
   return (
     <div className="banner-container">
-      <img src="../home.webp" alt="img" className="login-img" />
+      <img src="../home.webp" alt="img" className="login-img" style={{height:"550px"}} />
       <div className="register-component">
         <div className="container d-flex align-items-center justify-content-center min-vh-100">
           <div className="row w-100">
-            <div className="col-md-10 offset-md-2">
+            <div className="col-md-12 offset-md-2">
               <div className="card shadow">
                 <div className="card-body">
                   <h3
                     className="card-title text-center"
-                    style={{ color: "#FF7F50" }}
+                    style={{ color: "#db0011" }}
                   >
                     Login
                   </h3>
-                  <form>
+                  <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="mb-3">
-                      <label htmlFor="accountNo" className="form-label">
-                        Account No
+                      <label htmlFor="emailId" className="form-label">
+                        Email ID
                       </label>
                       <input
-                        type="text"
+                        type="email"
                         className="form-control"
-                        id="accountNo"
-                        placeholder="Enter Account No"
+                        id="emailId"
+                        placeholder="Enter Email Id"
+                        {...register("emailId", { required: true })}
                       />
+                      {errors.emailId && <p className="text-danger">Email ID is required</p>}
                     </div>
                     <div className="mb-3">
-                      <label htmlFor="pin" className="form-label">
-                        PIN
+                      <label htmlFor="password" className="form-label">
+                        Password
                       </label>
                       <input
                         type="password"
                         className="form-control"
-                        id="pin"
-                        placeholder="Enter PIN"
+                        id="password"
+                        placeholder="Enter Password"
+                        {...register("password", { required: true })}
                       />
+                      {errors.password && <p className="text-danger">Password is required</p>}
                     </div>
-                    <button
-                      type="submit"
-                      className="btn btn-primary w-100"
-                      style={{
-                        backgroundColor: "#FF7F50",
-                        borderColor: "#FF7F50",
-                      }}
-                    >
-                      Login
-                    </button>
+                    <PrimaryButton type="submit" label="Login" btnColor="#db0011" onClick={handleSubmit(onSubmit)} />
                   </form>
                   <div className="mt-3 text-center">
                     <p>
                       Not registered?{" "}
-                      <Link to="/" style={{ color: "#FF7F50" }}>
+                      <Link to="/" style={{ color: "#db0011" }}>
                         Sign up here
                       </Link>
                     </p>
