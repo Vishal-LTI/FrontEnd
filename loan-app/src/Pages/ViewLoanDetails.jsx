@@ -1,8 +1,8 @@
 import React from "react";
-import NumberCard from "../Atoms/NumberCard";
-import DonutChartComponent from "../Atoms/DonutChart";
+import NumberCard from "../atoms/NumberCard";
+import DonutChartComponent from "../atoms/DonutChart";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "../Atoms/Navbar";
+import Navbar from "../atoms/Navbar";
 
 const ViewLoanDetails = () => {
   const loanDetails = {

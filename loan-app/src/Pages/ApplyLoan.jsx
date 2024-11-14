@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Navbar from "../Atoms/Navbar";
-import Footer from "../Atoms/Footer";
+import Navbar from "../atoms/Navbar";
+import Footer from "../atoms/Footer";
 
 const ApplyLoan = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto"; // Ensure you have this import for Chart.js to work correctly
-import "../../Styles/calculator.css";
-import Navbar from "../../Atoms/Navbar";
-import Footer from "../../Atoms/Footer";
+import "../../styles/calculator.css";
+import Navbar from "../../atoms/Navbar";
+import Footer from "../../atoms/Footer";
 import { Link } from "react-router-dom";
 const PrepaymentCalculator = () => {
   const [amount, setAmount] = useState(0);

@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import "../Styles/login.css"; // Assuming you have some custom styles
-import PrimaryButton from "../Atoms/PrimaryButton";
+import "../styles/login.css"; // Assuming you have some custom styles
+import PrimaryButton from "../atoms/PrimaryButton";
 
 const Login = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log("Login Data: ", data);
@@ -14,11 +18,16 @@ const Login = () => {
 
   return (
     <div className="banner-container">
-      <img src="../home.webp" alt="img" className="login-img" style={{height:"550px"}} />
+      <img
+        src="./login.jpg"
+        alt="img"
+        className="login-img"
+        style={{ width: "550px" }}
+      />
       <div className="register-component">
         <div className="container d-flex align-items-center justify-content-center min-vh-100">
           <div className="row w-100">
-            <div className="col-md-12 offset-md-2">
+            <div className="col-md-12 offset-md-1">
               <div className="card shadow">
                 <div className="card-body">
                   <h3
@@ -39,7 +48,9 @@ const Login = () => {
                         placeholder="Enter Email Id"
                         {...register("emailId", { required: true })}
                       />
-                      {errors.emailId && <p className="text-danger">Email ID is required</p>}
+                      {errors.emailId && (
+                        <p className="text-danger">Email ID is required</p>
+                      )}
                     </div>
                     <div className="mb-3">
                       <label htmlFor="password" className="form-label">
@@ -52,14 +63,21 @@ const Login = () => {
                         placeholder="Enter Password"
                         {...register("password", { required: true })}
                       />
-                      {errors.password && <p className="text-danger">Password is required</p>}
+                      {errors.password && (
+                        <p className="text-danger">Password is required</p>
+                      )}
                     </div>
-                    <PrimaryButton type="submit" label="Login" btnColor="#db0011" onClick={handleSubmit(onSubmit)} />
+                    <PrimaryButton
+                      type="submit"
+                      label="Login"
+                      btnColor="#db0011"
+                      onClick={handleSubmit(onSubmit)}
+                    />
                   </form>
                   <div className="mt-3 text-center">
                     <p>
                       Not registered?{" "}
-                      <Link to="/" style={{ color: "#db0011" }}>
+                      <Link to="/register" style={{ color: "#db0011" }}>
                         Sign up here
                       </Link>
                     </p>
