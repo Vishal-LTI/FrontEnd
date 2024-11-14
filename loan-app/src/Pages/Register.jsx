@@ -21,23 +21,29 @@ const Register = () => {
   };
 
   return (
-    <div className="container" style={{ maxWidth: "600px", marginTop: "80px" }}>
-      <div className="card shadow">
-        <h5
-          className="card-title text-center"
-          style={{
-            color: "#ffffff",
-            background: "#db0011",
-            borderRadius: "5px 5px 0px 0px",
-            padding: "10px",
-          }}
-        >
-          Register
-        </h5>
-        <div className="card-body">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="d-flex">
-              <div className="mb-3" style={{ marginRight: "10px" }}>
+    <>
+      <div className="register-component">
+        <img src="./register.jpg" alt="register" style={{ width: "500px" }} />
+      </div>
+      <div
+        className=""
+        style={{ maxWidth: "400px", marginTop: "80px", marginLeft: "150px" }}
+      >
+        <div className="card shadow">
+          <h5
+            className="card-title text-center"
+            style={{
+              color: "#ffffff",
+              background: "#db0011",
+              borderRadius: "5px 5px 0px 0px",
+              padding: "10px",
+            }}
+          >
+            Register
+          </h5>
+          <div className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="row">
+              <div className="col-md-6 mb-3">
                 <label htmlFor="name" className="form-label">
                   Name
                 </label>
@@ -50,7 +56,7 @@ const Register = () => {
                 />
                 {errors.name && <p className="text-danger">Name is required</p>}
               </div>
-              <div className="mb-3">
+              <div className="col-md-6 mb-3">
                 <label htmlFor="contactNo" className="form-label">
                   Contact No
                 </label>
@@ -65,9 +71,7 @@ const Register = () => {
                   <p className="text-danger">Contact No is required</p>
                 )}
               </div>
-            </div>
-            <div className="d-flex">
-              <div className="mb-3" style={{ marginRight: "10px" }}>
+              <div className="col-md-6 mb-3">
                 <label htmlFor="password" className="form-label">
                   Password
                 </label>
@@ -82,7 +86,7 @@ const Register = () => {
                   <p className="text-danger">Password is required</p>
                 )}
               </div>
-              <div className="mb-3">
+              <div className="col-md-6 mb-3">
                 <label htmlFor="confirmPassword" className="form-label">
                   Confirm Password
                 </label>
@@ -97,59 +101,72 @@ const Register = () => {
                   <p className="text-danger">Confirm Password is required</p>
                 )}
               </div>
-            </div>
-            <div className="mb-3 align-items-center">
-              <label htmlFor="email" className="form-label" style={{ flex: 1 }}>
-                Email
-              </label>
-              <div className="d-flex">
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  placeholder="Enter Email"
-                  style={{ flex: 2, marginRight:'10px' }}
-                  {...register("email", { required: true })}
-                />
-               <PrimaryButton type="submit" label="Verify" btnColor="#db0011" onClick={handleSubmit(onSubmit)} />
-              </div>
-              {errors.email && <p className="text-danger">Email is required</p>}
-            </div>
-            {showOtp && (
-              <div className="mb-3">
-                <label htmlFor="otp" className="form-label">
-                  OTP
+              <div className="col-md-12 mb-3">
+                <label htmlFor="email" className="form-label">
+                  Email
                 </label>
-                <div className="d-flex justify-content-between">
-                  {[0, 1, 2, 3].map((_, index) => (
-                    <input
-                      key={index}
-                      type="text"
-                      maxLength="1"
-                      className="form-control"
-                      style={{ width: "40px", textAlign: "center" }}
-                      {...register(`otp.${index}`, { required: true })}
-                    />
-                  ))}
+                <div className="input-group">
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    placeholder="Enter Email"
+                    {...register("email", { required: true })}
+                  />
+                  <PrimaryButton
+                    type="button"
+                    label="Verify"
+                    btnColor="#db0011"
+                    width="100px"
+                    onClick={handleVerifyClick}
+                  />
                 </div>
-                {errors.otp && (
-                  <p className="text-danger">All OTP fields are required</p>
+                {errors.email && (
+                  <p className="text-danger">Email is required</p>
                 )}
               </div>
-            )}
-            <PrimaryButton type="submit" label="Register" btnColor="#db0011" onClick={handleSubmit(onSubmit)} />
-          </form>
-          <div className="mt-3 text-center">
-            <p>
-              Already have an account?{" "}
-              <Link to="/login" style={{ color: "#db0011" }}>
-                Login here
-              </Link>
-            </p>
+              {showOtp && (
+                <div className="col-md-12 mb-3">
+                  <label htmlFor="otp" className="form-label">
+                    OTP
+                  </label>
+                  <div className="d-flex justify-content-between">
+                    {[0, 1, 2, 3].map((_, index) => (
+                      <input
+                        key={index}
+                        type="text"
+                        maxLength="1"
+                        className="form-control"
+                        style={{ width: "40px", textAlign: "center" }}
+                        {...register(`otp.${index}`, { required: true })}
+                      />
+                    ))}
+                  </div>
+                  {errors.otp && (
+                    <p className="text-danger">All OTP fields are required</p>
+                  )}
+                </div>
+              )}
+              <div className="col-md-12 mb-3">
+                <PrimaryButton
+                  type="submit"
+                  label="Register"
+                  btnColor="#db0011"
+                />
+              </div>
+            </form>
+            <div className="mt-3 text-center">
+              <p>
+                Already have an account?{" "}
+                <Link to="/login" style={{ color: "#db0011" }}>
+                  Login here
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

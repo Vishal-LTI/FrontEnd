@@ -19,7 +19,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Home />} />
+        <Route path="/register" element={<Register/>} />
  
 {/* Calculator routes */}
         <Route path="/home-loan-emicalculator" element={<EMICalculator title="Home Loan EMI Calculator" interestRate='8.5' minTenuare="10" maxTenuare="30"/>} />
