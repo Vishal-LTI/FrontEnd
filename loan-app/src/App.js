@@ -5,9 +5,11 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import EMICalculator from "./Components/Calculator/EmiCalculator";
 import PrepaymentCalculator from "./Components/Calculator/PrepaymentCalculator";
-import ViewProfilePage from "./Pages/ViewProfile";
+import ViewProfilePage from "./Pages/ViewLoanDetails";
 import UpdateProfilePage from "./Pages/UpdateProfile";
 import ViewLoanDetails from "./Pages/ViewLoanDetails";
+import KYCVerification from "./Pages/KYCVerification";
+import ApplyLoan from "./Pages/ApplyLoan";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         
 {/* profile routes */}
         <Route path="/view-profile" element={<ViewProfilePage />} />
+        <Route path="/kyc" element={<KYCVerification />} />
+        <Route path="/apply-loan" element={<ApplyLoan />} />
         <Route path="/update-profile" element={<UpdateProfilePage />} />
         <Route path="/view-loan-details" element={<ViewLoanDetails />} />
       </Routes>
