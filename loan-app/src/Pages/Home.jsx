@@ -3,7 +3,6 @@ import Navbar from "../atoms/Navbar";
 import "../styles/home.css";
 import FeatureCard from "../Components/FeatureCard";
 import Accordion from "../atoms/Accordion";
-import Register from "./Register";
 import Footer from "../atoms/Footer";
 import PrimaryButton from "../atoms/PrimaryButton";
 import { useNavigate } from "react-router-dom";
