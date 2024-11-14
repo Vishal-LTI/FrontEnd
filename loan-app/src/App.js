@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-import Register from "./Pages/Register";
+//import Register from "./Pages/Register";
 import EMICalculator from "./Components/Calculator/EmiCalculator";
 import PrepaymentCalculator from "./Components/Calculator/PrepaymentCalculator";
 import ViewProfilePage from "./Pages/ViewLoanDetails";
@@ -10,6 +10,7 @@ import UpdateProfilePage from "./Pages/UpdateProfile";
 import ViewLoanDetails from "./Pages/ViewLoanDetails";
 import KYCVerification from "./Pages/KYCVerification";
 import ApplyLoan from "./Pages/ApplyLoan";
+import ProtectedRoute from "./Atoms/ProtectedRoute";
 
 function App() {
   return (
@@ -29,11 +30,15 @@ function App() {
         <Route path="/prepaymentCalculator" element={<PrepaymentCalculator />} />
         
 {/* profile routes */}
-        <Route path="/view-profile" element={<ViewProfilePage />} />
-        <Route path="/kyc" element={<KYCVerification />} />
-        <Route path="/apply-loan" element={<ApplyLoan />} />
-        <Route path="/update-profile" element={<UpdateProfilePage />} />
-        <Route path="/view-loan-details" element={<ViewLoanDetails />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path='/view-profile' element={<ViewProfilePage />} />
+          <Route path="/kyc" element={<KYCVerification />} />
+          <Route path="/apply-loan" element={<ApplyLoan />} />
+          <Route path="/update-profile" element={<UpdateProfilePage />} />
+          <Route path="/view-loan-details" element={<ViewLoanDetails />} />
+        </Route>
+        {/* <Route path="/view-profile" element={<ViewProfilePage />} /> */}
+        
       </Routes>
     </Router>
   );
