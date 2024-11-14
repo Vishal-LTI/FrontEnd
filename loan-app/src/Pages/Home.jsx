@@ -1,10 +1,12 @@
 import React from "react";
-import Navbar from "../Atoms/Navbar";
-import "../Styles/home.css";
+import Navbar from "../atoms/Navbar";
+import "../styles/home.css";
 import FeatureCard from "../Components/FeatureCard";
-import Accordion from "../Atoms/Accordion";
+import Accordion from "../atoms/Accordion";
 import Register from "./Register";
-import Footer from "../Atoms/Footer";
+import Footer from "../atoms/Footer";
+import PrimaryButton from "../atoms/PrimaryButton";
+import { useNavigate } from "react-router-dom";
 
 const accordionData = [
   {
@@ -96,13 +98,35 @@ const loanTypesData = [
 ];
 
 const Home = () => {
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    navigate(`/login`);
+  };
+  const handleRegister = () => {
+    navigate(`/register`);
+  };
   return (
     <>
       <Navbar />
       <div className="banner-container">
         <img src="../home.webp" alt="img" className="banner-img" />
         <div className="register-component">
-          <Register />
+          <div className="mb-3 mt-5" style={{ marginLeft: "150px" }}>
+            <PrimaryButton
+              type="submit"
+              label="Login"
+              btnColor="#db0011"
+              onClick={handleLogin}
+            />
+          </div>
+          <div style={{ marginLeft: "150px" }}>
+            <PrimaryButton
+              type="submit"
+              label="Register"
+              btnColor="#db0011"
+              onClick={handleRegister}
+            />
+          </div>
         </div>
       </div>
 

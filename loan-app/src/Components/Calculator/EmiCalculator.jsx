@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto"; // Ensure you have this import for Chart.js to work correctly
-import "../../Styles/calculator.css";
-import Navbar from "../../Atoms/Navbar";
+import "../../styles/calculator.css";
+import Navbar from "../../atoms/Navbar";
 import { Link } from "react-router-dom";
-import Footer from "../../Atoms/Footer";
+import Footer from "../../atoms/Footer";
 const EMICalculator = ({ interestRate, minTenuare, maxTenuare, title }) => {
   const [amount, setAmount] = useState(0);
   const [rate, setRate] = useState(interestRate);

@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styles/featureCard.css";
+import "../styles/featureCard.css";
 import { useNavigate } from "react-router-dom";
 const FeatureCard = ({ img, title, description, btnText, link }) => {
   const navigate = useNavigate();

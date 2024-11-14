@@ -1,8 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../Styles/viewProfile.css";
-import Navbar from "../Atoms/Navbar";
-import Footer from "../Atoms/Footer";
+import "../styles/viewProfile.css";
+import Navbar from "../atoms/Navbar";
+import Footer from "../atoms/Footer";
 const ViewProfilePage = () => {
   // Dummy data for user profile
   const userProfile = {
