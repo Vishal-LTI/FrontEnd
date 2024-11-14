@@ -1,11 +1,11 @@
 import React from "react";
-import Navbar from "../Atoms/Navbar";
-import "../Styles/home.css";
+import Navbar from "../atoms/Navbar";
+import "../styles/home.css";
 import FeatureCard from "../Components/FeatureCard";
-import Accordion from "../Atoms/Accordion";
+import Accordion from "../atoms/Accordion";
 import Register from "./Register";
-import Footer from "../Atoms/Footer";
-import PrimaryButton from "../Atoms/PrimaryButton";
+import Footer from "../atoms/Footer";
+import PrimaryButton from "../atoms/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 
 const accordionData = [

@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import "../Styles/login.css"; // Assuming you have some custom styles
-import PrimaryButton from "../Atoms/PrimaryButton";
+import "../styles/login.css"; // Assuming you have some custom styles
+import PrimaryButton from "../atoms/PrimaryButton";
 
 const Login = () => {
   const {

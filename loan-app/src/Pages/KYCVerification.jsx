@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import Footer from "../Atoms/Footer";
-import Navbar from "../Atoms/Navbar";
+import Footer from "../atoms/Footer";
+import Navbar from "../atoms/Navbar";
 
 const KYCVerification = () => {
   const [showOtp, setShowOtp] = useState(false);

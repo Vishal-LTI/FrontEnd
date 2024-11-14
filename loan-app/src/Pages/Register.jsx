@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import PrimaryButton from "../Atoms/PrimaryButton";
+import PrimaryButton from "../atoms/PrimaryButton";
 
 const Register = () => {
   const [showOtp, setShowOtp] = useState(false);
