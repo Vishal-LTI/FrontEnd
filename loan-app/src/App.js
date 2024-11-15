@@ -10,6 +10,7 @@ import UpdateProfilePage from "./pages/UpdateProfile";
 import ViewLoanDetails from "./pages/ViewLoanDetails";
 import KYCVerification from "./pages/KYCVerification";
 import ApplyLoan from "./pages/ApplyLoan";
+import ProtectedRoute from "./atoms/ProtectedRoute";
 
 function App() {
   return (
@@ -72,11 +73,13 @@ function App() {
         />
 
         {/* profile routes */}
-        <Route path="/view-profile" element={<ViewProfilePage />} />
-        <Route path="/kyc" element={<KYCVerification />} />
-        <Route path="/apply-loan" element={<ApplyLoan />} />
-        <Route path="/update-profile" element={<UpdateProfilePage />} />
-        <Route path="/view-loan-details" element={<ViewLoanDetails />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/view-profile" element={<ViewProfilePage />} />
+          <Route path="/kyc" element={<KYCVerification />} />
+          <Route path="/apply-loan" element={<ApplyLoan />} />
+          <Route path="/update-profile" element={<UpdateProfilePage />} />
+          <Route path="/view-loan-details" element={<ViewLoanDetails />} />
+        </Route>
       </Routes>
     </Router>
   );

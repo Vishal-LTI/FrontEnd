@@ -1,20 +1,44 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 import PrimaryButton from "../atoms/PrimaryButton";
+import { registerUser } from '../features/auth/authActions';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [showOtp, setShowOtp] = useState(false);
+  const { loading, userInfo, error, success } = useSelector(
+    (state) => state.auth
+  )
+  const [customError, setCustomError] = useState(null)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  useEffect(() => {
+    // redirect user to login page if registration was successful
+    if (success) navigate('/login')
+    // redirect authenticated user to profile screen
+    if (userInfo) navigate('/user-profile')
+  }, [navigate, userInfo, success])
+
+
   const onSubmit = (data) => {
-    console.log("Registration Data: ", data);
-    // handle registration logic here
-  };
+    // check if passwords match
+     // check if passwords match
+     if (data.password !== data.confirmPassword) {
+      setCustomError('Password mismatch')
+      return
+    }
+    // transform email string to lowercase to avoid case sensitivity issues in login
+    data.email = data.email.toLowerCase()
+    dispatch(registerUser(data))
+  }
 
   const handleVerifyClick = () => {
     setShowOtp(true);
@@ -43,6 +67,8 @@ const Register = () => {
           </h5>
           <div className="card-body">
             <form onSubmit={handleSubmit(onSubmit)} className="row">
+            {error && <p className="text-danger">{error}</p>}
+            {customError && <p className="text-danger">{customError}</p>}
               <div className="col-md-6 mb-3">
                 <label htmlFor="name" className="form-label">
                   Name
@@ -148,11 +174,7 @@ const Register = () => {
                 </div>
               )}
               <div className="col-md-12 mb-3">
-                <PrimaryButton
-                  type="submit"
-                  label="Register"
-                  btnColor="#db0011"
-                />
+              <PrimaryButton type="submit" label={loading ? 'Loading...' : 'Register'} btnColor="#db0011" onClick={handleSubmit(onSubmit)} />
               </div>
             </form>
             <div className="mt-3 text-center">
