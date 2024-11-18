@@ -46,10 +46,13 @@ const Login = () => {
                         className="form-control"
                         id="emailId"
                         placeholder="Enter Email Id"
-                        {...register("emailId", { required: true })}
+                        {...register("emailId", { required: true, pattern: {
+                          value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                          message: 'Please enter a valid Email Id',
+                      } })}
                       />
                       {errors.emailId && (
-                        <p className="text-danger">Email ID is required</p>
+                        <p className="text-danger">{errors.emailId.message}</p>
                       )}
                     </div>
                     <div className="mb-3">
