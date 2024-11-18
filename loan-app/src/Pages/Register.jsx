@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import PrimaryButton from "../atoms/PrimaryButton";
 import { registerUser } from '../features/auth/authActions';
 import { useNavigate } from 'react-router-dom';
+import encryptPassword from "../utis/utils";
 
 const Register = () => {
   const [showOtp, setShowOtp] = useState(false);
@@ -16,6 +17,7 @@ const Register = () => {
   const navigate = useNavigate()
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -37,6 +39,7 @@ const Register = () => {
     }
     // transform email string to lowercase to avoid case sensitivity issues in login
     data.email = data.email.toLowerCase()
+    data.password= encryptPassword(data.password);
     dispatch(registerUser(data))
   }
 
@@ -78,9 +81,12 @@ const Register = () => {
                   className="form-control"
                   id="name"
                   placeholder="Enter Name"
-                  {...register("name", { required: true })}
+                  {...register("name", { required: true, pattern: {
+                    value: /[A-Za-z]/,
+                    message: 'Only alphabets are allowed for name'
+                  } })}
                 />
-                {errors.name && <p className="text-danger">Name is required</p>}
+                {errors.name && <p className="text-danger">{errors.name.message}</p>}
               </div>
               <div className="col-md-6 mb-3">
                 <label htmlFor="contactNo" className="form-label">
@@ -91,10 +97,13 @@ const Register = () => {
                   className="form-control"
                   id="contactNo"
                   placeholder="Enter Contact No"
-                  {...register("contactNo", { required: true })}
+                  {...register("contactNo", { required: true, pattern: {
+                    value: /[0-9]{10}/,
+                    message: 'Contact number must be 10 chars and only contain numbers.'
+                  } })}
                 />
                 {errors.contactNo && (
-                  <p className="text-danger">Contact No is required</p>
+                  <p className="text-danger">{errors.contactNo.message}</p>
                 )}
               </div>
               <div className="col-md-6 mb-3">
@@ -121,10 +130,14 @@ const Register = () => {
                   className="form-control"
                   id="confirmPassword"
                   placeholder="Enter Confirm Password"
-                  {...register("confirmPassword", { required: true })}
+                  {...register("confirmPassword", { required: true, validate: (val) => {
+                    if (watch('password') !== val) {
+                      return "Passwords do no match";
+                    }
+                  } })}
                 />
                 {errors.confirmPassword && (
-                  <p className="text-danger">Confirm Password is required</p>
+                  <p className="text-danger">{errors.confirmPassword.message}</p>
                 )}
               </div>
               <div className="col-md-12 mb-3">
@@ -137,7 +150,12 @@ const Register = () => {
                     className="form-control"
                     id="email"
                     placeholder="Enter Email"
-                    {...register("email", { required: true })}
+                    {...register("email", { required: true,
+                      pattern: {
+                        value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: 'Please enter a valid email',
+                    },
+                     })}
                   />
                   <PrimaryButton
                     type="button"
@@ -148,7 +166,7 @@ const Register = () => {
                   />
                 </div>
                 {errors.email && (
-                  <p className="text-danger">Email is required</p>
+                  <p className="text-danger">{errors.email.message}</p>
                 )}
               </div>
               {showOtp && (
