@@ -1,17 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/viewProfile.css";
 import Navbar from "../atoms/Navbar";
 import Footer from "../atoms/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetUserDetailsQuery } from "../services/auth/authService";
+import { setCredentials } from "../features/auth/authSlice";
 const ViewProfilePage = () => {
+  const { userInfo } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
+
+  // automatically authenticate user if token is found
+  const { data, isFetching } = useGetUserDetailsQuery('userDetails', {
+    pollingInterval: 900000, // 15mins
+  })
+
+  useEffect(() => {
+    if (data) dispatch(setCredentials(data))
+  }, [data, dispatch])
   // Dummy data for user profile
   const userProfile = {
     photo: "../Media.png",
-    firstName: "John",
-    lastName: "Doe",
+    //firstName: "John",
+    //lastName: "Doe",
+    name:userInfo?.name.charAt(0).toUpperCase(),
     age: 30,
     dob: "24/12/1997",
     companyDetails: "Works at Tech Corp as a Senior Developer.",
+    contact:userInfo?.contact,
+    email:userInfo?.email,
     contactDetails: "john.doe@example.com, +1-555-555-5555",
   };
   const loanDetails = {
@@ -136,7 +153,7 @@ const ViewProfilePage = () => {
                       >
                         First Name:
                       </label>
-                      <span>{userProfile.firstName}</span>
+                      <span>{userProfile.name}</span>
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -147,7 +164,7 @@ const ViewProfilePage = () => {
                       >
                         Last Name:
                       </label>
-                      <span>{userProfile.lastName}</span>
+                      <span>{userProfile.name}</span>
                     </div>
                   </div>
                   <div className="col-md-6">

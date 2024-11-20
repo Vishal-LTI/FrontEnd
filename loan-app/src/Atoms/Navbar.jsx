@@ -1,12 +1,19 @@
 import React from "react";
 import "../styles/navbar.css";
+import { Nav } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { logout } from "../features/auth/authSlice";
 const Navbar = () => {
+  const dispatch = useDispatch()
   return (
     <nav className="navbar navbar-expand-lg nav-bg">
       <div className="container-fluid">
-        <a className="navbar-brand nav-title" href="/">
+      <Nav.Link className="navbar-brand nav-title" href="/">
           Loan Bank |<span className="nav-subtitle">Home Loan</span>{" "}
-        </a>
+        </Nav.Link>
+        <button className="nav-link nav-title justify-content-end" href="/" onClick={() => dispatch(logout())}>
+          Logout
+          </button>
         <button
           className="navbar-toggler"
           type="button"

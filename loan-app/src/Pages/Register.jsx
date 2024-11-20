@@ -192,7 +192,7 @@ const Register = () => {
                 </div>
               )}
               <div className="col-md-12 mb-3">
-              <PrimaryButton type="submit" label={loading ? 'Loading...' : 'Register'} btnColor="#db0011" onClick={handleSubmit(onSubmit)} />
+              <PrimaryButton type="submit" label={loading ? 'Sending Data...' : 'Register'} btnColor="#db0011" onClick={handleSubmit(onSubmit)} />
               </div>
             </form>
             <div className="mt-3 text-center">

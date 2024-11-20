@@ -28,4 +28,4 @@ export const authApi = createApi({
 })
 
 // export react hook
-export const { useGetUserDetailsQuery, useRegisterUserMutation } = authApi
+export const { useGetUserDetailsQuery } = authApi
