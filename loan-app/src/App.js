@@ -80,10 +80,15 @@ function App() {
         />
 
         {/* profile routes */}
+        <Route path="/view-profile" element={<ViewProfilePage />} />
         <Route element={<ProtectedRoute />}>
+
           <Route path="/view-profile" element={<ViewProfilePage />} />
        
           
+
+          <Route path="/kyc" element={<KYCVerification />} />
+          <Route path="/apply-loan" element={<ApplyLoan />} />
           <Route path="/update-profile" element={<UpdateProfilePage />} />
         
         </Route>

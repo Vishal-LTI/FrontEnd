@@ -1,8 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "../styles/login.css"; // Assuming you have some custom styles
 import PrimaryButton from "../atoms/PrimaryButton";
+import encryptPassword from "../utis/utils";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogin } from "../features/auth/authActions";
 
 const Login = () => {
   const {
@@ -11,9 +14,23 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const { loading, userInfo, error, success } = useSelector(
+    (state) => state.auth
+  )
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    // redirect authenticated user to profile screen
+    if (success && userInfo) navigate('/view-profile')
+  }, [navigate, userInfo, success])
+
+
   const onSubmit = (data) => {
     console.log("Login Data: ", data);
-    // handle login logic here
+    data.email = data.email.toLowerCase()
+    data.password= encryptPassword(data.password);
+    dispatch(userLogin(data));
   };
 
   return (
@@ -37,22 +54,27 @@ const Login = () => {
                     Login
                   </h3>
                   <form onSubmit={handleSubmit(onSubmit)}>
+                  {error && <p className="text-danger">{error}</p>}
                     <div className="mb-3">
-                      <label htmlFor="emailId" className="form-label">
+                      <label htmlFor="email" className="form-label">
                         Email ID
                       </label>
                       <input
                         type="email"
                         className="form-control"
-                        id="emailId"
+                        id="email"
                         placeholder="Enter Email Id"
-                        {...register("emailId", { required: true, pattern: {
+
+                        {...register("email", { required: true, pattern: {
+
                           value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                           message: 'Please enter a valid Email Id',
                       } })}
                       />
-                      {errors.emailId && (
-                        <p className="text-danger">{errors.emailId.message}</p>
+
+                      {errors.email && (
+                        <p className="text-danger">{errors.email.message}</p>
+
                       )}
                     </div>
                     <div className="mb-3">
@@ -72,7 +94,7 @@ const Login = () => {
                     </div>
                     <PrimaryButton
                       type="submit"
-                      label="Login"
+                      label={loading ? 'Logging In...' : 'Login'}
                       btnColor="#db0011"
                       onClick={handleSubmit(onSubmit)}
                     />

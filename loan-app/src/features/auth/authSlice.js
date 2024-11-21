@@ -8,7 +8,11 @@ const userToken = localStorage.getItem('userToken')
 
 const initialState = {
   loading: false,
-  userInfo: null,
+  userInfo: {
+    name:'John Doe',
+    contact:'9876543210',
+    email:'john@test.com'
+  },
   userToken,
   error: null,
   success: false,
