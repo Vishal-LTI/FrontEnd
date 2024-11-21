@@ -23,16 +23,7 @@ export const authApi = createApi({
         url: 'api/user/profile',
         method: 'GET',
       }),
-    }),
-    registerUser: build.mutation({
-      query: (body) => {
-        return {
-          url: 'User/register',
-          method: 'POST',
-          body
-        };
-      }
-    }),
+    })
   }),
 })
 

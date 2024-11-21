@@ -9,7 +9,7 @@ const ViewLoanDetails = () => {
     totalLoanAmount: 1000000,
     principal: 800000,
     interest: 200000,
-    totalEMI: 20000,
+    totalEMI: 250,
     emi: 1000,
     tenure: 20,
     interestRate: 8.5,
@@ -38,17 +38,17 @@ const ViewLoanDetails = () => {
         <div className="row mb-4">
           <NumberCard
             title="Total Loan Amount"
-            value={`$${loanDetails.totalLoanAmount.toFixed(0)}`}
+            value={`₹${loanDetails.totalLoanAmount.toFixed(0)}`}
           />
           <NumberCard
             title="Outstanding Amount"
-            value={`$${loanDetails.outstandingAmount.toFixed(0)}`}
+            value={`₹${loanDetails.outstandingAmount.toFixed(0)}`}
           />
           <NumberCard
             title="Total EMI"
-            value={`$${loanDetails.totalEMI.toFixed(0)}`}
+            value={`${loanDetails.totalEMI.toFixed(0)}`}
           />
-          <NumberCard title="EMI" value={`$${loanDetails.emi.toFixed(0)}`} />
+          <NumberCard title="EMI" value={`₹${loanDetails.emi.toFixed(0)}`} />
         </div>
         <div className="row mb-4">
           <NumberCard title="Tenure" value={`${loanDetails.tenure} years`} />
@@ -59,7 +59,7 @@ const ViewLoanDetails = () => {
           <NumberCard title="Pending EMI" value={loanDetails.pendingEMI} />
           <NumberCard
             title="Outstanding Amount"
-            value={`$${loanDetails.outstandingAmount.toFixed(0)}`}
+            value={`₹${loanDetails.outstandingAmount.toFixed(0)}`}
           />
         </div>
         <div className="row">
@@ -78,9 +78,9 @@ const ViewLoanDetails = () => {
                     {loanDetails.nextEMI.map((emi, index) => (
                       <tr key={index}>
                         <td>{emi.date}</td>
-                        <td>${emi.amount.toFixed(0)}</td>
+                        <td>₹{emi.amount.toFixed(0)}</td>
                       </tr>
-                    ))}
+                    ))}av
                   </tbody>
                 </table>
               </div>

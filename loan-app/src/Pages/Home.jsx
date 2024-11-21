@@ -6,7 +6,7 @@ import Accordion from "../atoms/Accordion";
 import Footer from "../atoms/Footer";
 import PrimaryButton from "../atoms/PrimaryButton";
 import { useNavigate } from "react-router-dom";
-
+import CryptoJS from 'crypto-js';
 const accordionData = [
   {
     title: "Home Loan Interest Rate",
@@ -104,6 +104,17 @@ const Home = () => {
   const handleRegister = () => {
     navigate(`/register`);
   };
+ 
+
+const secretKey = '$2a$10$Nt1wP/JVv'; // Keep this safe!
+
+const encryptData = (data) => {
+    return CryptoJS.AES.encrypt(data, secretKey).toString();
+};
+
+const dataToEncrypt = 'Hello, World!';
+const encryptedData = encryptData(dataToEncrypt);
+console.log('encryptedData', encryptedData); // This is the encrypted string
   return (
     <>
       <Navbar />
