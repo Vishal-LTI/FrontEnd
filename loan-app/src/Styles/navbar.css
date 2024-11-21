@@ -13,3 +13,19 @@
     font-size: medium;
     padding-left: 5px;
 }
+
+.profile-initials {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: #db0011;
+    font-weight: bold;
+    margin-right: 10px;
+    border: 2px solid #db0011;
+  }
+  
+  

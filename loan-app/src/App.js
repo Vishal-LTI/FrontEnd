@@ -11,6 +11,9 @@ import ViewLoanDetails from "./pages/ViewLoanDetails";
 import KYCVerification from "./pages/KYCVerification";
 import ApplyLoan from "./pages/ApplyLoan";
 import ProtectedRoute from "./atoms/ProtectedRoute";
+import Error401 from "./pages/statusPages/Error401";
+import Error404 from "./pages/statusPages/Error404";
+import Error500 from "./pages/statusPages/Error500";
 
 function App() {
   return (
@@ -22,6 +25,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
+        {/* error routes */}
+        <Route path="*" element={<Error404 />} />
+        <Route path="/error" element={<Error500 />} />
+      
         {/* Calculator routes */}
         <Route
           path="/home-loan-emicalculator"
@@ -75,11 +82,19 @@ function App() {
         {/* profile routes */}
         <Route path="/view-profile" element={<ViewProfilePage />} />
         <Route element={<ProtectedRoute />}>
+
+          <Route path="/view-profile" element={<ViewProfilePage />} />
+       
+          
+
           <Route path="/kyc" element={<KYCVerification />} />
           <Route path="/apply-loan" element={<ApplyLoan />} />
           <Route path="/update-profile" element={<UpdateProfilePage />} />
-          <Route path="/view-loan-details" element={<ViewLoanDetails />} />
+        
         </Route>
+        <Route path="/kyc" element={<KYCVerification />} />
+        <Route path="/apply-loan" element={<ApplyLoan />} />
+        <Route path="/view-loan-details" element={<ViewLoanDetails />} />
       </Routes>
     </Router>
   );
