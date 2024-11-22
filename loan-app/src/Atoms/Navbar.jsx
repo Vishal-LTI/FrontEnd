@@ -6,7 +6,8 @@ import { useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 const Navbar = () => {
   const dispatch = useDispatch()
-
+const isLoggedIn = true
+const userInitials = "U"
   return (
     <nav className="navbar navbar-expand-lg nav-bg">
       <div className="container-fluid">

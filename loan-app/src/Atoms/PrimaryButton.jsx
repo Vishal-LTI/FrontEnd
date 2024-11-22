@@ -7,10 +7,12 @@ const PrimaryButton = ({
   type = "button",
   style = {},
   width = "200px",
+  disabled
 }) => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <button
+      disabled={disabled}
         type={type}
         className="btn btn-primary"
         onClick={onClick}

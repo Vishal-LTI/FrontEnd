@@ -1,20 +1,19 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import PrimaryButton from "../atoms/PrimaryButton";
-import { registerUser } from '../features/auth/authActions';
-import { useNavigate } from 'react-router-dom';
-import encryptPassword from "../utis/utils";
+import { registerUser, sendOtp } from "../features/auth/authActions";
 
 const Register = () => {
   const [showOtp, setShowOtp] = useState(false);
-  const { loading, userInfo, error, success } = useSelector(
+  const [btnDisable, setBtnDisable] = useState(true);
+  const { loading, error, success, otpSent } = useSelector(
     (state) => state.auth
-  )
-  const [customError, setCustomError] = useState(null)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  );
+  const [customError, setCustomError] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     watch,
@@ -23,28 +22,33 @@ const Register = () => {
   } = useForm();
 
   useEffect(() => {
-    // redirect user to login page if registration was successful
-    if (success) navigate('/login')
-    // redirect authenticated user to profile screen
-    if (userInfo) navigate('/user-profile')
-  }, [navigate, userInfo, success])
+    // Redirect user to profile page if registration was successful
+    if (success) navigate("/view-profile");
+  }, [navigate, success]);
 
-
-  const onSubmit = (data) => {
-    // check if passwords match
-     // check if passwords match
-     if (data.password !== data.confirmPassword) {
-      setCustomError('Password mismatch')
-      return
+  const onSubmit = async (data) => {
+    // Check if passwords match
+    console.log("data", data);
+    console.log("otplength", data.otp.length);
+    if (data.password !== data.confirmPassword) {
+      setCustomError("Passwords do not match");
+      return;
     }
-    // transform email string to lowercase to avoid case sensitivity issues in login
-    data.email = data.email.toLowerCase()
-    data.password= encryptPassword(data.password);
-    dispatch(registerUser(data))
-  }
+    if (data.otp.length < 6) {
+      setCustomError("OTP must be 6 digits");
+    }
+    // Transform email string to lowercase to avoid case sensitivity issues in login
+    data.email = data.email.toLowerCase();
+
+    // Dispatch registration action with OTP
+    dispatch(registerUser(data));
+  };
 
   const handleVerifyClick = () => {
+    const email = watch("email").toLowerCase();
+    dispatch(sendOtp({ email }));
     setShowOtp(true);
+    setBtnDisable(false);
   };
 
   return (
@@ -70,8 +74,7 @@ const Register = () => {
           </h5>
           <div className="card-body">
             <form onSubmit={handleSubmit(onSubmit)} className="row">
-            {error && <p className="text-danger">{error}</p>}
-            {customError && <p className="text-danger">{customError}</p>}
+          
               <div className="col-md-6 mb-3">
                 <label htmlFor="name" className="form-label">
                   Name
@@ -81,12 +84,17 @@ const Register = () => {
                   className="form-control"
                   id="name"
                   placeholder="Enter Name"
-                  {...register("name", { required: true, pattern: {
-                    value: /[A-Za-z]/,
-                    message: 'Only alphabets are allowed for name'
-                  } })}
+                  {...register("name", {
+                    required: true,
+                    pattern: {
+                      value: /[A-Za-z]/,
+                      message: "Only alphabets are allowed for name",
+                    },
+                  })}
                 />
-                {errors.name && <p className="text-danger">{errors.name.message}</p>}
+                {errors.name && (
+                  <p className="text-danger">{errors.name.message}</p>
+                )}
               </div>
               <div className="col-md-6 mb-3">
                 <label htmlFor="contactNo" className="form-label">
@@ -97,10 +105,14 @@ const Register = () => {
                   className="form-control"
                   id="contactNo"
                   placeholder="Enter Contact No"
-                  {...register("contactNo", { required: true, pattern: {
-                    value: /[0-9]{10}/,
-                    message: 'Contact number must be 10 chars and only contain numbers.'
-                  } })}
+                  {...register("contactNo", {
+                    required: true,
+                    pattern: {
+                      value: /[0-9]{10}/,
+                      message:
+                        "Contact number must be 10 digits and only contain numbers.",
+                    },
+                  })}
                 />
                 {errors.contactNo && (
                   <p className="text-danger">{errors.contactNo.message}</p>
@@ -130,14 +142,19 @@ const Register = () => {
                   className="form-control"
                   id="confirmPassword"
                   placeholder="Enter Confirm Password"
-                  {...register("confirmPassword", { required: true, validate: (val) => {
-                    if (watch('password') !== val) {
-                      return "Passwords do no match";
-                    }
-                  } })}
+                  {...register("confirmPassword", {
+                    required: true,
+                    validate: (val) => {
+                      if (watch("password") !== val) {
+                        return "Passwords do not match";
+                      }
+                    },
+                  })}
                 />
                 {errors.confirmPassword && (
-                  <p className="text-danger">{errors.confirmPassword.message}</p>
+                  <p className="text-danger">
+                    {errors.confirmPassword.message}
+                  </p>
                 )}
               </div>
               <div className="col-md-12 mb-3">
@@ -150,19 +167,22 @@ const Register = () => {
                     className="form-control"
                     id="email"
                     placeholder="Enter Email"
-                    {...register("email", { required: true,
+                    {...register("email", {
+                      required: true,
                       pattern: {
-                        value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: 'Please enter a valid email',
-                    },
-                     })}
+                        value:
+                          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: "Please enter a valid email",
+                      },
+                    })}
                   />
                   <PrimaryButton
                     type="button"
-                    label="Verify"
+                    label={otpSent ? "OTP Sent" : "Verify"}
                     btnColor="#db0011"
                     width="100px"
                     onClick={handleVerifyClick}
+                    disabled={otpSent}
                   />
                 </div>
                 {errors.email && (
@@ -174,30 +194,32 @@ const Register = () => {
                   <label htmlFor="otp" className="form-label">
                     OTP
                   </label>
-                  <div className="d-flex justify-content-between">
-                    {[0, 1, 2, 3].map((_, index) => (
-                      <input
-                        key={index}
-                        type="text"
-                        maxLength="1"
-                        className="form-control"
-                        style={{ width: "40px", textAlign: "center" }}
-                        {...register(`otp.${index}`, { required: true })}
-                      />
-                    ))}
-                  </div>
-                  {errors.otp && (
-                    <p className="text-danger">All OTP fields are required</p>
-                  )}
+                  <input
+                    type="text"
+                    maxLength="6"
+                    className="form-control"
+                    id="otp"
+                    placeholder="Enter OTP"
+                    {...register("otp", { required: true })}
+                  />
+                  {errors.otp && <p className="text-danger">OTP is required</p>}
                 </div>
               )}
               <div className="col-md-12 mb-3">
-              <PrimaryButton type="submit" label={loading ? 'Sending Data...' : 'Register'} btnColor="#db0011" onClick={handleSubmit(onSubmit)} />
+                <PrimaryButton
+                  disabled={btnDisable}
+                  type="submit"
+                  label={loading ? "Sending Data..." : "Register"}
+                  btnColor="#db0011"
+                />
               </div>
+{/* 
+              {error && <p className="text-danger">{error}</p>} */}
+              {customError && <p className="text-danger">{customError}</p>}
             </form>
             <div className="mt-3 text-center">
               <p>
-                Already have an account?{" "}
+                Already have an account?
                 <Link to="/login" style={{ color: "#db0011" }}>
                   Login here
                 </Link>

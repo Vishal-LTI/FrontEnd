@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import EMICalculator from "./Components/calculator/EmiCalculator";
 import PrepaymentCalculator from "./Components/calculator/PrepaymentCalculator";
-import ViewProfilePage from "./pages/ViewLoanDetails";
+import ViewProfilePage from "./pages/ViewProfile";
 import UpdateProfilePage from "./pages/UpdateProfile";
 import ViewLoanDetails from "./pages/ViewLoanDetails";
 import KYCVerification from "./pages/KYCVerification";
@@ -28,7 +28,7 @@ function App() {
         {/* error routes */}
         <Route path="*" element={<Error404 />} />
         <Route path="/error" element={<Error500 />} />
-      
+
         {/* Calculator routes */}
         <Route
           path="/home-loan-emicalculator"
@@ -82,15 +82,10 @@ function App() {
         {/* profile routes */}
         <Route path="/view-profile" element={<ViewProfilePage />} />
         <Route element={<ProtectedRoute />}>
-
           <Route path="/view-profile" element={<ViewProfilePage />} />
-       
-          
-
           <Route path="/kyc" element={<KYCVerification />} />
           <Route path="/apply-loan" element={<ApplyLoan />} />
           <Route path="/update-profile" element={<UpdateProfilePage />} />
-        
         </Route>
         <Route path="/kyc" element={<KYCVerification />} />
         <Route path="/apply-loan" element={<ApplyLoan />} />
