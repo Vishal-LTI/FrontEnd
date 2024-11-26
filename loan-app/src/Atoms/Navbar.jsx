@@ -1,58 +1,37 @@
 import React, { useState, useEffect } from "react";
 import "../styles/navbar.css";
 
-import { Nav } from "react-bootstrap";
+import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
-const Navbar = () => {
+const NavbarMenu = () => {
   const dispatch = useDispatch()
 const isLoggedIn = true
-const userInitials = "U"
+const userInitials = "U";
   return (
-    <nav className="navbar navbar-expand-lg nav-bg">
-      <div className="container-fluid">
-      <Nav.Link className="navbar-brand nav-title" href="/">
-          Loan Bank |<span className="nav-subtitle">Home Loan</span>{" "}
-        </Nav.Link>
-        <button className="nav-link nav-title justify-content-end" href="/" onClick={() => dispatch(logout())}>
-          Logout
-          </button>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul className="navbar-nav">
-            {isLoggedIn && (
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="profileDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span className="profile-initials">{userInitials}</span>
-                </a>
-                <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                  <li><a className="dropdown-item" href="/profile">Profile</a></li>
-                  <li><a className="dropdown-item" href="/logout">Logout</a></li>
-                </ul>
-              </li>
-            )}
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <Navbar className="navbar navbar-expand-lg nav-bg">
+      <Container>
+        <Navbar.Brand className="nav-title" href="/">
+            <b>Loan App</b>
+          </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-end">
+          <Nav className="align-items-center">
+            <Nav.Link href="dashboard" className="nav-title">Home</Nav.Link>
+            <Nav.Link href="view-loan-details" className="nav-title ">Loan</Nav.Link>
+            <NavDropdown title={<span className="profile-initials">{userInitials}</span>} id="basic-nav-dropdown" className="nav-link nav-title justify-content-end">
+              <NavDropdown.Item href="view-profile">Profile</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Settings</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item as="button" onClick={() => dispatch(logout())}>
+                Logout              
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default NavbarMenu;
