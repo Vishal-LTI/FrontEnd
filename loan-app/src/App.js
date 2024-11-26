@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -16,6 +16,9 @@ import Error404 from "./pages/statusPages/Error404";
 import Error500 from "./pages/statusPages/Error500";
 
 function App() {
+  useEffect(() => {
+    document.title = 'Loan App';
+  }, []);
   return (
     <Router>
       <Routes>
