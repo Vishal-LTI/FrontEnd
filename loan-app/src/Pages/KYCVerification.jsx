@@ -73,7 +73,7 @@ const KYCVerification = () => {
                     <p className="text-danger">Aadhaar ID is required</p>
                   )}
                 </div>
-                <div className="mb-3 d-flex align-items-center">
+                {/* <div className="mb-3 d-flex align-items-center">
                   <label
                     htmlFor="email"
                     className="form-label"
@@ -89,7 +89,12 @@ const KYCVerification = () => {
                     style={{ flex: 2 }}
                     {...register("email", { required: true })}
                   />
-                  <button
+                  
+                </div>
+                {errors.email && (
+                  <p className="text-danger">Email is required</p>
+                )} */}
+                <button
                     type="button"
                     className="btn btn-secondary"
                     onClick={handleVerifyClick}
@@ -97,10 +102,6 @@ const KYCVerification = () => {
                   >
                     Verify
                   </button>
-                </div>
-                {errors.email && (
-                  <p className="text-danger">Email is required</p>
-                )}
                 {showOtp && (
                   <div className="mb-3">
                     <label htmlFor="otp" className="form-label">
