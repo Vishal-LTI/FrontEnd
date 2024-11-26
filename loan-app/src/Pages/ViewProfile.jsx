@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/viewProfile.css";
-import Navbar from "../atoms/Navbar";
+import NavbarMenu from "../atoms/Navbar";
 import Footer from "../atoms/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetUserDetailsQuery } from "../services/auth/authService";
@@ -42,7 +42,7 @@ const ViewProfilePage = () => {
 
   return (
     <>
-      <Navbar />
+      <NavbarMenu />
       <div className="container my-5">
         <h3
           className="card-title text-center mb-5"
