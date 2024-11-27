@@ -1,21 +1,20 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Home from "./pages/userPages/Home";
+import Login from "./pages/userPages/Login";
+import Register from "./pages/userPages/Register";
 import EMICalculator from "./Components/calculator/EmiCalculator";
 import PrepaymentCalculator from "./Components/calculator/PrepaymentCalculator";
-import ViewProfilePage from "./pages/ViewProfile";
-import UpdateProfilePage from "./pages/UpdateProfile";
-import ViewLoanDetails from "./pages/ViewLoanDetails";
-import KYCVerification from "./pages/KYCVerification";
-import ApplyLoan from "./pages/ApplyLoan";
+import ViewLoanDetails from "./pages/userPages/ViewLoanDetails";
+import KYCVerification from "./pages/userPages/KYCVerification";
+import ApplyLoan from "./pages/userPages/ApplyLoan";
 import ProtectedRoute from "./atoms/ProtectedRoute";
 import Error404 from "./pages/statusPages/Error404";
 import Error500 from "./pages/statusPages/Error500";
-import Dashboard from "./pages/Dashboard";
-import UserProfileDetails from "./pages/UserProfile";
-import EditProfileForm from "./pages/EditProfile";
+import Dashboard from "./pages/userPages/Dashboard";
+import UserProfileDetails from "./pages/userPages/UserProfile";
+import EditProfileForm from "./pages/userPages/EditProfile";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   useEffect(() => {
@@ -87,11 +86,8 @@ function App() {
         {/* profile routes */}
         <Route path="/view-profile" element={<UserProfileDetails />} />
         <Route path="/edit-profile" element={<EditProfileForm />} />
-        <Route path="/kyc" element={<KYCVerification />} />
         <Route element={<ProtectedRoute />}>
-          {/* <Route path="/view-profile" element={<ViewProfilePage />} /> */}
-          {/* <Route path="/apply-loan" element={<ApplyLoan />} /> */}
-          {/* <Route path="/update-profile" element={<UpdateProfilePage />} /> */}
+        
         </Route>
 
         {/* loan routes */}
@@ -99,6 +95,10 @@ function App() {
         <Route path="/view-loan-details" element={<ViewLoanDetails />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/kyc" element={<KYCVerification />} />
+
+        {/* Admin routes */}
+        <Route path="/admin-dashboard" element={<AdminDashboard/>} />
+        
       </Routes>
     </Router>
   );

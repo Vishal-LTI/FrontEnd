@@ -1,8 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import Layout from "../Components/Layout";
+import { useDispatch } from "react-redux";
+import { applyLoan } from "../../features/auth/authActions";
+import Layout from "../../Components/Layout";
 
 const ApplyLoan = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -11,7 +14,13 @@ const ApplyLoan = () => {
 
   const onSubmit = (data) => {
     console.log("Loan Details Submitted: ", data);
-    // Add your form submission logic here
+    dispatch(applyLoan({
+      loanAmount: data.loanAmount,
+      tenureInYears: data.tenureInYears,
+      userId: data.user,
+      loanTypeId: data.loanType,
+      loanStatusId: data.loanStatus,
+    }));
   };
 
   return (
@@ -85,7 +94,7 @@ const ApplyLoan = () => {
                     EMI Debited Date
                   </label>
                   <input
-                    type="datetime-local"
+                    type="date"
                     className="form-control"
                     id="emiDebitedDate"
                     {...register("emiDebitedDate", { required: true })}
@@ -130,7 +139,7 @@ const ApplyLoan = () => {
                     Loan Type
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     className="form-control"
                     id="loanType"
                     placeholder="Enter Loan Type"
@@ -145,7 +154,7 @@ const ApplyLoan = () => {
                     Loan Status
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     className="form-control"
                     id="loanStatus"
                     placeholder="Enter Loan Status"

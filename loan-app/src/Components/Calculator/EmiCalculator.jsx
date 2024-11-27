@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto"; // Ensure you have this import for Chart.js to work correctly
 import "../../styles/calculator.css";
-import Navbar from "../../atoms/Navbar";
+import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
-import Footer from "../../atoms/Footer";
+import Footer from "../Footer";
 const EMICalculator = ({ interestRate, minTenuare, maxTenuare, title }) => {
   const [amount, setAmount] = useState(0);
   const [rate, setRate] = useState(interestRate);
@@ -121,7 +121,7 @@ const EMICalculator = ({ interestRate, minTenuare, maxTenuare, title }) => {
                 onChange={(e) => setTenure(e.target.value)}
               />
             </div>
-            <button className="btn btn-primary w-100" onClick={calculateEMI}>
+            <button className="btn btn-danger w-100" onClick={calculateEMI}>
               Calculate EMI
             </button>
           </div>

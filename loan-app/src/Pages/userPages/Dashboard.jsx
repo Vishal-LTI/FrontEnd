@@ -1,8 +1,8 @@
 import React from "react";
-import Layout from "../Components/Layout";
-import NumberCard from "../atoms/NumberCard";
-import TableComponent from "../Components/TableComponent";
-import DonutChartComponent from "../atoms/DonutChart";
+import Layout from "../../Components/Layout";
+import NumberCard from "../../atoms/NumberCard";
+import TableComponent from "../../Components/TableComponent";
+import DonutChartComponent from "../../atoms/DonutChart";
 
 const Dashboard = () => {
   const handleView = (rowIndex) => {
@@ -45,6 +45,7 @@ const Dashboard = () => {
     {
       title: "Total Loan Amount",
       value: `₹${loanDetails.totalLoanAmount.toFixed(0)}`,
+      imgUrl:'./Kyc.jpg'
     },
     {
       title: "Outstanding Amount",

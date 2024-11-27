@@ -18,7 +18,7 @@ const Sidebar = () => {
         <Link className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} to="/">Home</Link>
         <Link className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`} to="/dashboard">Dashboard</Link>
         <Link className={`nav-link ${location.pathname === '/view-profile' ? 'active' : ''}`} to="/view-profile">Profile</Link>
-        <Link className={`nav-link ${location.pathname === '/update-profile' ? 'active' : ''}`} to="/update-profile">Update Profile</Link>
+        <Link className={`nav-link ${location.pathname === '/edit-profile' ? 'active' : ''}`} to="/edit-profile">Update Profile</Link>
         <Link className={`nav-link ${location.pathname === '/apply-loan' ? 'active' : ''}`} to="/apply-loan">Apply for Loan</Link>
         <Link className={`nav-link ${location.pathname === '/view-loan-details' ? 'active' : ''}`} to="/view-loan-details">Loan Details</Link>
         <Link className={`nav-link ${location.pathname === '/kyc' ? 'active' : ''}`} to="/kyc">KYC Verification</Link>

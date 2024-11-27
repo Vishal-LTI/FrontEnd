@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
+import "../styles/numberCard.css";
 
-const NumberCard = ({ title, value }) => {
+const NumberCard = ({ title, value, imgUrl }) => {
   return (
     <div>
-      <div className="card">
+      <div className="card number-card">
         <div className="card-body">
-        <h5 className="card-text">{value}</h5>
+          <img src={imgUrl} alt="icon" className="top-right-img" />
+          <h5 className="card-text">{value}</h5>
           <p className="card-title">{title}</p>
-         
         </div>
       </div>
     </div>

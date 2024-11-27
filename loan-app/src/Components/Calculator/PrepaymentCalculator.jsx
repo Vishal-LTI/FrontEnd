@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto"; // Ensure you have this import for Chart.js to work correctly
 import "../../styles/calculator.css";
-import Navbar from "../../atoms/Navbar";
-import Footer from "../../atoms/Footer";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 import { Link } from "react-router-dom";
 const PrepaymentCalculator = () => {
   const [amount, setAmount] = useState(0);
@@ -166,7 +166,7 @@ const PrepaymentCalculator = () => {
               />
             </div>
             <button
-              className="btn btn-primary w-100"
+              className="btn btn-danger w-100"
               onClick={calculatePrepayment}
             >
               Calculate EMI after Prepayment

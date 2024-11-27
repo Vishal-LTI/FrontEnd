@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Container, Row, Col, Card, Form, Button, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Layout from '../../Components/Layout';
 
 // Validation schema
 const schema = yup.object().shape({
@@ -55,6 +56,7 @@ const EditProfileForm = () => {
   };
 
   return (
+    <Layout>
     <Container className="mt-5">
       <Row className="justify-content-md-center">
         <Col md={12}>
@@ -222,6 +224,7 @@ const EditProfileForm = () => {
         </Col>
       </Row>
     </Container>
+    </Layout>
   );
 };
 
