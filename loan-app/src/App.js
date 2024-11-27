@@ -16,6 +16,7 @@ import Error404 from "./pages/statusPages/Error404";
 import Error500 from "./pages/statusPages/Error500";
 import UserProfileDetails from "./pages/UserProfile";
 import EditProfileForm from "./pages/EditProfile";
+import AdminLogin from "./pages/adminPages/AdminLogin";
 
 function App() {
   useEffect(() => {
@@ -24,6 +25,9 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* admin routes */}
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
         {/* login routes */}
         <Route exact path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
