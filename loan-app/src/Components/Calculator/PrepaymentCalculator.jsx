@@ -180,9 +180,8 @@ const PrepaymentCalculator = () => {
                 </div>
               </div>
             )}
-          </div>
-          <div>
-            <div style={{ marginTop: "50px", width: "100%" }}>
+            <div>
+            <div style={{ margin: "50px", width: "100%" }}>
               <p>
                 <b>EMI:</b> {emi} per month
               </p>
@@ -203,10 +202,10 @@ const PrepaymentCalculator = () => {
               </p>
             </div>
           </div>
-        </div>
-        <div className="mt-5 mb-4">
-          <h3>Most Popular Calculators</h3>
-          <ul style={{ display: "flex", justifyContent: "space-between" }}>
+          </div>
+          <div className="mt-5 mb-4">
+          <h4>Most Popular Calculators</h4>
+          <ul style={{listStyle:'none' }}>
             <li>
               <Link to="/home-loan-emicalculator">Home Loan Calculator</Link>
             </li>
@@ -221,11 +220,11 @@ const PrepaymentCalculator = () => {
             <li>
               <Link to="/gold-loan-emicalculator">Gold Loan Calculator</Link>
             </li>
-            <li>
-              <Link to="/land-loan-emicalculator">Land Loan Calculator</Link>
-            </li>
+            
           </ul>
         </div>
+        </div>
+        
       </div>
 
       <Footer />

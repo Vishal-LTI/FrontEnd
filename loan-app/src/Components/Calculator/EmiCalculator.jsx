@@ -133,43 +133,44 @@ const EMICalculator = ({ interestRate, minTenuare, maxTenuare, title }) => {
                 </div>
               </div>
             )}
+            <div style={{ margin: "50px", width: "50%" }}>
+              <p>
+                <b>EMI:</b> {emi} per month
+              </p>
+              <p>
+                <b>Principal Amount:</b> {amount}
+              </p>
+              <p>
+                <b>Total Interest:</b> {interestAmount}
+              </p>
+              <p>
+                <b>Total Amount:</b> {total}
+              </p>
+            </div>
           </div>
-          <div style={{ marginTop: "50px", width: "30%" }}>
-            <p>
-              <b>EMI:</b> {emi} per month
-            </p>
-            <p>
-              <b>Principal Amount:</b> {amount}
-            </p>
-            <p>
-              <b>Total Interest:</b> {interestAmount}
-            </p>
-            <p>
-              <b>Total Amount:</b> {total}
-            </p>
+          <div className="mt-5 mb-4">
+            <h4>Most Popular Calculators</h4>
+            <ul style={{ listStyle: "none" }}>
+              <li>
+                <Link to="/home-loan-emicalculator">Home Loan Calculator</Link>
+              </li>
+              <li>
+                <Link to="/car-loan-emicalculator">Car Loan Calculator</Link>
+              </li>
+              <li>
+                <Link to="/personal-loan-emicalculator">
+                  Personal Loan Calculator
+                </Link>
+              </li>
+              <li>
+                <Link to="/gold-loan-emicalculator">Gold Loan Calculator</Link>
+              </li>
+             
+              <li>
+                <Link to="/prepaymentCalculator">Part Payment Calculator</Link>
+              </li>
+            </ul>
           </div>
-        </div>
-        <div className="mt-5 mb-4">
-          <h3>Most Popular Calculators</h3>
-          <ul style={{ display: "flex", justifyContent: "space-between" }}>
-            <li>
-              <Link to="/home-loan-emicalculator">Home Loan Calculator</Link>
-            </li>
-            <li>
-              <Link to="/car-loan-emicalculator">Car Loan Calculator</Link>
-            </li>
-            <li>
-              <Link to="/personal-loan-emicalculator">
-                Personal Loan Calculator
-              </Link>
-            </li>
-            <li>
-              <Link to="/gold-loan-emicalculator">Gold Loan Calculator</Link>
-            </li>
-            <li>
-              <Link to="/land-loan-emicalculator">Land Loan Calculator</Link>
-            </li>
-          </ul>
         </div>
       </div>
       <Footer />

@@ -6,6 +6,7 @@ import Footer from "../atoms/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetUserDetailsQuery } from "../services/auth/authService";
 import { setCredentials } from "../features/auth/authSlice";
+import Layout from "../Components/Layout";
 const ViewProfilePage = () => {
   const { userInfo } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
@@ -42,7 +43,7 @@ const ViewProfilePage = () => {
 
   return (
     <>
-      <NavbarMenu />
+    <Layout>
       <div className="container my-5">
         <h3
           className="card-title text-center mb-5"
@@ -295,7 +296,7 @@ const ViewProfilePage = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      </Layout>
     </>
   );
 };

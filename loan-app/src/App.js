@@ -11,14 +11,13 @@ import ViewLoanDetails from "./pages/ViewLoanDetails";
 import KYCVerification from "./pages/KYCVerification";
 import ApplyLoan from "./pages/ApplyLoan";
 import ProtectedRoute from "./atoms/ProtectedRoute";
-import Error401 from "./pages/statusPages/Error401";
 import Error404 from "./pages/statusPages/Error404";
 import Error500 from "./pages/statusPages/Error500";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
   useEffect(() => {
-    document.title = 'Loan App';
+    document.title = "Loan App";
   }, []);
   return (
     <Router>
@@ -85,16 +84,20 @@ function App() {
 
         {/* profile routes */}
         <Route path="/view-profile" element={<ViewProfilePage />} />
+        <Route path="/update-profile" element={<UpdateProfilePage />} />
+
         <Route element={<ProtectedRoute />}>
-          <Route path="/view-profile" element={<ViewProfilePage />} />
+          {/* <Route path="/view-profile" element={<ViewProfilePage />} /> */}
           {/* <Route path="/kyc" element={<KYCVerification />} /> */}
           {/* <Route path="/apply-loan" element={<ApplyLoan />} /> */}
-          <Route path="/update-profile" element={<UpdateProfilePage />} />
         </Route>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/kyc" element={<KYCVerification />} />
+
+        {/* loan routes */}
         <Route path="/apply-loan" element={<ApplyLoan />} />
         <Route path="/view-loan-details" element={<ViewLoanDetails />} />
+
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/kyc" element={<KYCVerification />} />
       </Routes>
     </Router>
   );

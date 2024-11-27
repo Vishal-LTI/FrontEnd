@@ -9,16 +9,14 @@ const NavbarMenu = () => {
 const isLoggedIn = true
 const userInitials = "U";
   return (
-    <Navbar className="navbar navbar-expand-lg nav-bg">
+    <Navbar className="navbar navbar-expand nav-bg" style={{height:'50px'}}>
       <Container>
         <Navbar.Brand className="nav-title" href="/">
-            <b>Loan App</b>
+            <img src="./logo.svg"/>
           </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-end">
           <Nav className="align-items-center">
-            <Nav.Link href="dashboard" className="nav-title">Home</Nav.Link>
-            <Nav.Link href="view-loan-details" className="nav-title ">Loan</Nav.Link>
             <NavDropdown title={<span className="profile-initials">{userInitials}</span>} id="basic-nav-dropdown" className="nav-link nav-title justify-content-end">
               <NavDropdown.Item href="view-profile">Profile</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Settings</NavDropdown.Item>

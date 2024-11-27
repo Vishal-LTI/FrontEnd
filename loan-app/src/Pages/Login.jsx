@@ -39,7 +39,7 @@ const Login = () => {
           src="./login.jpg"
           alt="img"
           className="login-img"
-          style={{ width: "550px" }}
+          style={{ width: "550px", margin:"0px 50px" }}
         />
         <div className="register-component">
           <div className="container d-flex align-items-center justify-content-center min-vh-100">
