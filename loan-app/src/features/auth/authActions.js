@@ -50,6 +50,9 @@ export const registerUser = createAsyncThunk(
       const registerData = { name, contactNo, email, password, otp };
       console.log(registerData);
       await axios.post(`${backendURL}/User/register`, registerData, config);
+           // store user's token in local storage
+           localStorage.setItem("userToken", registerData.jwtToken);
+           localStorage.setItem("refreshToken", registerData.refreshToken);
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -65,7 +68,7 @@ export const sendOtp = createAsyncThunk(
   async ({ email }, { rejectWithValue }) => {
     try {
       const config = { headers: { "Content-Type": "application/json" } };
-      const postdata = { email, otp : null };
+      const postdata = { email, otp: null };
       console.log(postdata);
       await axios.post(`${backendURL}/User/send-otp`, postdata, config);
     } catch (error) {

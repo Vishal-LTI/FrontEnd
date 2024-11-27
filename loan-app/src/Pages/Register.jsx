@@ -23,7 +23,7 @@ const Register = () => {
 
   useEffect(() => {
     // Redirect user to profile page if registration was successful
-    if (success) navigate("/view-profile");
+    if (success) navigate("/login");
   }, [navigate, success]);
 
   const onSubmit = async (data) => {
@@ -58,7 +58,7 @@ const Register = () => {
       </div>
       <div
         className=""
-        style={{ maxWidth: "400px", marginTop: "80px", marginLeft: "150px" }}
+        style={{ maxWidth: "500px", marginTop: "80px", marginLeft: "150px" }}
       >
         <div className="card shadow">
           <h5
@@ -77,7 +77,7 @@ const Register = () => {
           
               <div className="col-md-6 mb-3">
                 <label htmlFor="name" className="form-label">
-                  Name
+                  Name <span style={{fontSize:"10px"}}>(as per Aadhar)</span>
                 </label>
                 <input
                   type="text"

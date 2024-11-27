@@ -1,97 +1,52 @@
 import React from "react";
-import NumberCard from "../atoms/NumberCard";
-import DonutChartComponent from "../atoms/DonutChart";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "../atoms/Navbar";
+import Layout from "../Components/Layout";
 
 const ViewLoanDetails = () => {
   const loanDetails = {
-    totalLoanAmount: 1000000,
-    principal: 800000,
-    interest: 200000,
-    totalEMI: 250,
-    emi: 1000,
-    tenure: 20,
-    interestRate: 8.5,
-    pendingEMI: 200,
-    outstandingAmount: 500000,
-    nextEMI: [
-      { date: "2023-10-15", amount: 1000 },
-      { date: "2023-11-15", amount: 1000 },
-    ],
-  };
-
-  const chartData = {
-    labels: ["Principal", "Interest"],
-    datasets: [
-      {
-        data: [loanDetails.principal, loanDetails.interest],
-        backgroundColor: ["#36A2EB", "#FF6384"],
-      },
-    ],
+    loanAmount: 500000,
+    tenureInYears: 5,
+    tenureInMonths: 60,
+    emiDebitedDate: "2024-11-26T10:30",
+    interest: 7.5,
+    user: 12345,
+    loanType: "Home Loan",
+    loanStatus: "Approved"
   };
 
   return (
-    <>
-      <Navbar />
+    <Layout>
       <div className="container my-5">
-        <div className="row mb-4">
-          <NumberCard
-            title="Total Loan Amount"
-            value={`₹${loanDetails.totalLoanAmount.toFixed(0)}`}
-          />
-          <NumberCard
-            title="Outstanding Amount"
-            value={`₹${loanDetails.outstandingAmount.toFixed(0)}`}
-          />
-          <NumberCard
-            title="Total EMI"
-            value={`${loanDetails.totalEMI.toFixed(0)}`}
-          />
-          <NumberCard title="EMI" value={`₹${loanDetails.emi.toFixed(0)}`} />
-        </div>
-        <div className="row mb-4">
-          <NumberCard title="Tenure" value={`${loanDetails.tenure} years`} />
-          <NumberCard
-            title="Interest Rate"
-            value={`${loanDetails.interestRate}%`}
-          />
-          <NumberCard title="Pending EMI" value={loanDetails.pendingEMI} />
-          <NumberCard
-            title="Outstanding Amount"
-            value={`₹${loanDetails.outstandingAmount.toFixed(0)}`}
-          />
-        </div>
-        <div className="row">
-          <div className="col-8">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Next EMI Due</h5>
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {loanDetails.nextEMI.map((emi, index) => (
-                      <tr key={index}>
-                        <td>{emi.date}</td>
-                        <td>₹{emi.amount.toFixed(0)}</td>
-                      </tr>
-                    ))}av
-                  </tbody>
-                </table>
+        <div className="card shadow">
+          <h5
+            className="card-title text-center"
+            style={{
+              color: "#ffffff",
+              background: "#db0011",
+              borderRadius: "5px 5px 0px 0px",
+              padding: "10px",
+            }}
+          >
+            Loan Details
+          </h5>
+          <div className="card-body">
+            <div className="row">
+              <div className="col-md-6">
+                <p><strong>Loan Amount:</strong> ₹{loanDetails.loanAmount}</p>
+                <p><strong>Tenure (Years):</strong> {loanDetails.tenureInYears}</p>
+                <p><strong>Tenure (Months):</strong> {loanDetails.tenureInMonths}</p>
+                <p><strong>EMI Debited Date:</strong> {loanDetails.emiDebitedDate}</p>
+              </div>
+              <div className="col-md-6">
+                <p><strong>Interest Rate (%):</strong> {loanDetails.interest}</p>
+                <p><strong>User ID:</strong> {loanDetails.user}</p>
+                <p><strong>Loan Type:</strong> {loanDetails.loanType}</p>
+                <p><strong>Loan Status:</strong> {loanDetails.loanStatus}</p>
               </div>
             </div>
           </div>
-          <div className="col-md-4">
-            <DonutChartComponent data={chartData} />
-          </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

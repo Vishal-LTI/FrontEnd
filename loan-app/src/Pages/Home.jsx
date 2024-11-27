@@ -53,6 +53,11 @@ const featureData = [
     title: "Digital Sanction",
     description: "Online sanction in few steps",
   },
+  {
+    img: "../digital_sanction.png",
+    title: "Easy Pre Payments",
+    description: "Online sanction in few steps",
+  },
 ];
 
 const loanTypesData = [
@@ -89,9 +94,9 @@ const loanTypesData = [
   },
   {
     img: "../zero_foreclosure.jpg",
-    title: "Land Loan",
+    title: "Pre Payment Calculator",
     btnText: "Calculate",
-    link: "/land-loan-emicalculator",
+    link: "/prepaymentCalculator",
     description: "Acquire land and build your dream home with a Land Loan",
   },
 ];
@@ -165,7 +170,7 @@ console.log('encryptedData', encryptedData); // This is the encrypted string
         ))}
       </div>
 
-      <h4>Types of Loan</h4>
+      <h4>Loan Calculators</h4>
       <div className="d-flex">
         {loanTypesData.map((loanType, index) => (
           <FeatureCard
