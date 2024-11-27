@@ -2,8 +2,8 @@
     background-color: #db0011;
 }
 
-.nav-title{
-    color: #ffffff;
+.navbar .nav-title{
+    color: #ffffff !important;
     font-size: larger;
 }
 
