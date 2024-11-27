@@ -14,6 +14,8 @@ import ProtectedRoute from "./atoms/ProtectedRoute";
 import Error404 from "./pages/statusPages/Error404";
 import Error500 from "./pages/statusPages/Error500";
 import Dashboard from "./pages/Dashboard";
+import UserProfileDetails from "./pages/UserProfile";
+import EditProfileForm from "./pages/EditProfile";
 
 function App() {
   useEffect(() => {
@@ -83,19 +85,18 @@ function App() {
         />
 
         {/* profile routes */}
-        <Route path="/view-profile" element={<ViewProfilePage />} />
-        <Route path="/update-profile" element={<UpdateProfilePage />} />
-
+        <Route path="/view-profile" element={<UserProfileDetails />} />
+        <Route path="/edit-profile" element={<EditProfileForm />} />
+        <Route path="/kyc" element={<KYCVerification />} />
         <Route element={<ProtectedRoute />}>
           {/* <Route path="/view-profile" element={<ViewProfilePage />} /> */}
-          {/* <Route path="/kyc" element={<KYCVerification />} /> */}
           {/* <Route path="/apply-loan" element={<ApplyLoan />} /> */}
+          {/* <Route path="/update-profile" element={<UpdateProfilePage />} /> */}
         </Route>
 
         {/* loan routes */}
         <Route path="/apply-loan" element={<ApplyLoan />} />
         <Route path="/view-loan-details" element={<ViewLoanDetails />} />
-
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/kyc" element={<KYCVerification />} />
       </Routes>
