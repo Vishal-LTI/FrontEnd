@@ -19,15 +19,12 @@ const handleLogout = () => {
 }
   return (
     <Navbar className="navbar navbar-expand nav-bg" style={{height:'50px'}}>
-      <Container>
+      <Container fluid>
         <Navbar.Brand className="nav-title" href="/">
             <img src="/logo.svg"/>
             <span className="ms-2">|</span>
             <b className="ms-2">Admin</b>
           </Navbar.Brand>
-         
-          { isLoggedIn && 
-        <>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-end">
           <Nav className="align-items-center">
@@ -41,8 +38,6 @@ const handleLogout = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        </>
-}
       </Container>
     </Navbar>
   );

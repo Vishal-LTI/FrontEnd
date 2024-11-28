@@ -30,17 +30,23 @@ const LoanDetails = () => {
     <>
       <Layout isUser={false}>
         <div className="container">
+          <div className="text-black d-flex justify-content-end align-items-center my-2">
+            <Button variant="success" className="me-2">Approve</Button>
+            <Button variant="primary" onClick={handleShow}>Reject</Button>
+          </div>
           <div className="mt-2 mb-2">
             <Card>
               <Card.Header
                 as="h5"
-                className="text-black d-flex justify-content-between align-items-center"
+                className="d-flex justify-content-between align-items-center"
+                style={{
+                  color: "#ffffff",
+                  background: "#db0011",
+                  borderRadius: "5px 5px 0px 0px",
+                  padding: "10px",
+                }}  
               >
                 Loan Details
-                <div>
-                  <Button className="me-2">Approve</Button>
-                  <Button onClick={handleShow}>Reject</Button>
-                </div>
               </Card.Header>
               <Card.Body>
                 <Row>
@@ -73,13 +79,14 @@ const LoanDetails = () => {
               </Card.Body>
             </Card>
           </div>
-          <LoanDocumentsTable></LoanDocumentsTable>
+          
+        </div>
+        <LoanDocumentsTable></LoanDocumentsTable>
           <RejectModal
             show={showModal}
             handleClose={handleClose}
             handleSubmit={handleSubmit}
           />
-        </div>
       </Layout>
     </>
   );
