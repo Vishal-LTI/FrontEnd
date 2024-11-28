@@ -16,7 +16,8 @@ const initialState = {
   success: false,
   otpSent: false,
   otpVerified: false,
-  isLoggedIn:false
+  isLoggedIn:false,
+  isAdmin:false
 };
 
 const authSlice = createSlice({

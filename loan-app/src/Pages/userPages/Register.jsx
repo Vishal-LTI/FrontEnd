@@ -28,8 +28,6 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     // Check if passwords match
-    console.log("data", data);
-    console.log("otplength", data.otp.length);
     if (data.password !== data.confirmPassword) {
       setCustomError("Passwords do not match");
       return;

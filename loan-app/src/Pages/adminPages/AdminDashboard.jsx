@@ -43,12 +43,12 @@ const AdminDashboard = () => {
 
   const cardData = [
     {
-      title: "Total Loan Amount",
+      title: "Total Home Loans",
       value: `₹${loanDetails.totalLoanAmount.toFixed(0)}`,
       imgUrl:'./Kyc.jpg'
     },
     {
-      title: "Outstanding Amount",
+      title: "Total Car Loans",
       value: `₹${loanDetails.outstandingAmount.toFixed(0)}`,
     },
     { title: "Total EMI", value: `${loanDetails.totalEMI.toFixed(0)}` },
@@ -92,7 +92,7 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <Layout>
+    <Layout isUser={false}>
       <div className="container my-5">
         <div className="row mb-4 d-flex">
           {cardData.map((card, index) => (
