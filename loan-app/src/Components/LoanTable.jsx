@@ -5,10 +5,10 @@ import { FaEye, FaDownload } from 'react-icons/fa';
 
 const LoanDocumentsTable = () => {
   return (
-    <Card>
-        <Card.Header as="h5" className="text-black">Loan Documents</Card.Header>
-        <Card.Body>
-      <Table striped bordered hover>
+    // <Card>
+    //     <Card.Header as="h5" className="text-black btn">Loan Documents</Card.Header>
+    //     <Card.Body>
+      <Table striped hover>
         <thead>
           <tr>
             <th>Document Name</th>
@@ -21,38 +21,38 @@ const LoanDocumentsTable = () => {
             <td>Loan Agreement</td>
             <td>2023-04-01</td>
             <td>
-              <a href="#view" title="View"><FaEye /></a> &nbsp;
-              <a href="#download" title="Download"><FaDownload /></a>
+              <a href="#view" title="View"className='text-black'><FaEye /></a> &nbsp;
+              <a href="#download" title="Download" className='text-black'><FaDownload /></a>
             </td>
           </tr>
           <tr>
             <td>Identity Proof</td>
             <td>2023-04-02</td>
             <td>
-              <a href="#view" title="View"><FaEye /></a> &nbsp;
-              <a href="#download" title="Download"><FaDownload /></a>
+              <a href="#view" title="View" className='text-black'><FaEye /></a> &nbsp;
+              <a href="#download" title="Download" className='text-black'><FaDownload /></a>
             </td>
           </tr>
           <tr>
             <td>Income Proof</td>
             <td>2023-04-03</td>
             <td>
-              <a href="#view" title="View"><FaEye /></a> &nbsp;
-              <a href="#download" title="Download"><FaDownload /></a>
+              <a href="#view" title="View" className='text-black'><FaEye /></a> &nbsp;
+              <a href="#download" title="Download" className='text-black'><FaDownload /></a>
             </td>
           </tr>
           <tr>
             <td>Address Proof</td>
             <td>2023-04-04</td>
             <td>
-              <a href="#view" title="View"><FaEye /></a> &nbsp;
-              <a href="#download" title="Download"><FaDownload /></a>
+              <a href="#view" title="View" className='text-black'><FaEye /></a> &nbsp;
+              <a href="#download" title="Download" className='text-black'><FaDownload /></a>
             </td>
           </tr>
         </tbody>
       </Table>
-      </Card.Body>
-      </Card>
+    //   </Card.Body>
+    //   </Card>
   );
 };
 

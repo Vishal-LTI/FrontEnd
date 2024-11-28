@@ -5,7 +5,7 @@ import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-const NavbarMenu = () => {
+const NavbarMenu = ({isUser=true}) => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const { userInfo, userToken, isLoggedIn } = useSelector((state) => state.auth);
@@ -18,19 +18,19 @@ const handleLogout = () => {
   navigate("/home");
 }
   return (
-    <Navbar className="navbar navbar-expand nav-bg" style={{height:'50px'}}>
-      <Container>
+    <Navbar className="navbar navbar-expand nav-bg p3" style={{height:'50px'}}>
+      <div className="container-fluid">
         <Navbar.Brand className="nav-title" href="/">
             <img src="./logo.svg"/>
           </Navbar.Brand>
-          { !isLoggedIn && 
+          { !isUser && 
           <div className="d-flex justify-content-end">
           <Nav.Link href="login" className="nav-title nav-item">Login</Nav.Link> 
           <span className="mx-2 nav-title">|</span>
           <Nav.Link href="register"className="nav-title nav-item" > Register</Nav.Link> 
           </div>
           }
-          { isLoggedIn && 
+          { isUser && 
         <>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-end">
@@ -47,7 +47,7 @@ const handleLogout = () => {
         </Navbar.Collapse>
         </>
 }
-      </Container>
+</div>
     </Navbar>
   );
 };
