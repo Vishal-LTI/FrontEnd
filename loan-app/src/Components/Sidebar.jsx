@@ -28,9 +28,9 @@ const Sidebar = ({isAdmin = false}) => {
       (
         <nav className="nav flex-column">
         <Link className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} to="/">Home</Link>
-        <Link className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`} to="/dashboard">Dashboard</Link>
-        <Link className={`nav-link ${location.pathname === '/view-profile' ? 'active' : ''}`} to="/view-profile">Profile</Link>
-        <Link className={`nav-link ${location.pathname === '/edit-profile' ? 'active' : ''}`} to="/edit-profile">Update Profile</Link>
+        <Link className={`nav-link ${location.pathname === '/admin/dashboard' ? 'active' : ''}`} to="/admin/dashboard">Admin Dashboard</Link>
+        <Link className={`nav-link ${location.pathname === '/loan-applications' ? 'active' : ''}`} to="/loan-applications">Loan Applications</Link>
+        <Link className={`nav-link ${location.pathname === '/kyc-applications' ? 'active' : ''}`} to="/kyc-applications">KYC Applications</Link>
 
       </nav>
       )}

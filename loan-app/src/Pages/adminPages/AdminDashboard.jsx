@@ -3,8 +3,10 @@ import Layout from "../../Components/Layout";
 import NumberCard from "../../atoms/NumberCard";
 import TableComponent from "../../Components/TableComponent";
 import DonutChartComponent from "../../atoms/DonutChart";
+import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
+  const navigate = useNavigate("");
   const handleView = (rowIndex) => {
     console.log("View row:", rowIndex);
   };
@@ -16,27 +18,23 @@ const AdminDashboard = () => {
   };
   // Data for the cards
   const loanDetails = {
-    totalLoanAmount: 1000000,
-    principal: 800000,
-    interest: 200000,
-    totalEMI: 250,
-    emi: 1000,
-    tenure: 20,
-    interestRate: 8.5,
-    pendingEMI: 200,
-    outstandingAmount: 500000,
-    nextEMI: [
-      { date: "2023-10-15", amount: 1000 },
-      { date: "2023-11-15", amount: 1000 },
-    ],
+    totalHomeLoans: 10,
+    totalCarLoans: 8,
+    totalGoldLoans: 6,
+    totalPersonalLoans: 6,
   };
 
   const chartData = {
-    labels: ["Principal", "Interest"],
+    labels: ["Home Loan", "Car Loan", "Gold Loan", "Personal Loan"],
     datasets: [
       {
-        data: [loanDetails.principal, loanDetails.interest],
-        backgroundColor: ["#36A2EB", "#FF6384"],
+        data: [
+          loanDetails.totalHomeLoans,
+          loanDetails.totalCarLoans,
+          loanDetails.totalGoldLoans,
+          loanDetails.totalPersonalLoans,
+        ],
+        backgroundColor: ["#36A2EB", "#FF6384", "#36A2EB", "#FF6369"],
       },
     ],
   };
@@ -44,22 +42,15 @@ const AdminDashboard = () => {
   const cardData = [
     {
       title: "Total Home Loans",
-      value: `₹${loanDetails.totalLoanAmount.toFixed(0)}`,
-      imgUrl:'./Kyc.jpg'
+      value: `${loanDetails.totalHomeLoans}`,
+      imgUrl: "./Kyc.jpg",
     },
     {
       title: "Total Car Loans",
-      value: `₹${loanDetails.outstandingAmount.toFixed(0)}`,
+      value: `${loanDetails.totalCarLoans}`,
     },
-    { title: "Total EMI", value: `${loanDetails.totalEMI.toFixed(0)}` },
-    { title: "EMI", value: `₹${loanDetails.emi.toFixed(0)}` },
-    { title: "Tenure", value: `${loanDetails.tenure} years` },
-    { title: "Interest Rate", value: `${loanDetails.interestRate}%` },
-    { title: "Pending EMI", value: loanDetails.pendingEMI },
-    {
-      title: "Outstanding Amount",
-      value: `₹${loanDetails.outstandingAmount.toFixed(0)}`,
-    },
+    { title: "Total Gold Loans", value: `${loanDetails.totalGoldLoans}` },
+    { title: "Total Personal Loans", value: `₹${loanDetails.totalPersonalLoans}` },
   ];
 
   // Data for the loan details table
@@ -79,43 +70,22 @@ const AdminDashboard = () => {
     ["1", "John", "Personal", "L001", "1000000", "8.5%", "20", "1000", "200"],
   ];
 
-  // Data for the amortization table
-  const amortizationHeader = ["Sr.No", "Date", "EMI"];
-  const amortizationData = [
-    ["1", "2023-10-15", "1000"],
-    ["2", "2023-11-15", "1000"],
-    ["1", "2023-10-15", "1000"],
-    ["2", "2023-11-15", "1000"],
-    ["1", "2023-10-15", "1000"],
-    ["2", "2023-11-15", "1000"],
-    ["2", "2023-11-15", "1000"],
-  ];
-
+  const handleClick = () => {
+    navigate("/admin/loan-applications");
+  };
   return (
     <Layout isUser={false}>
       <div className="container my-5">
-        <div className="row mb-4 d-flex">
-          {cardData.map((card, index) => (
-            <div key={index} className="col-md-3 mb-3">
-              <NumberCard title={card.title} value={card.value} />
-            </div>
-          ))}
-        </div>
         <div className="row">
           <div className="col-md-12">
             <div className="d-flex">
-              <DonutChartComponent data={chartData} />
-              <div
-                className="card"
-                style={{ marginLeft: "20px", width: "600px" }}
-              >
-                <div className="card-body">
-                  <h5 className="card-title">Amortization</h5>
-                  <TableComponent
-                    headers={amortizationHeader}
-                    rows={amortizationData}
-                  />
-                </div>
+              <DonutChartComponent data={chartData} title={"Loan Stats"} />
+              <div className="row mb-4 d-flex">
+                {cardData.map((card, index) => (
+                  <div key={index} className="col-md-6 ">
+                    <NumberCard title={card.title} value={card.value} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -124,7 +94,18 @@ const AdminDashboard = () => {
           <div className="col-md-12">
             <div className="card mb-4">
               <div className="card-body">
-                <h5 className="card-title">Loan Details</h5>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "20px",
+                  }}
+                >
+                  <h5 className="card-title">Loan Applications</h5>
+                  <button className="btn btn-success" onClick={handleClick}>
+                    View All
+                  </button>
+                </div>
                 <TableComponent
                   headers={loanDetailsHeader}
                   rows={loanDetailsData}

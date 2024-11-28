@@ -1,11 +1,11 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const DonutChartComponent = ({ data }) => {
+const DonutChartComponent = ({ data, title }) => {
   return (
     <div className="card">
       <div className="card-body">
-        <h5 className="card-title">Principal vs Interest</h5>
+        <h5 className="card-title">{title}</h5>
         <Doughnut data={data} />
       </div>
     </div>
