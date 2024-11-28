@@ -122,7 +122,7 @@ const encryptedData = encryptData(dataToEncrypt);
 console.log('encryptedData', encryptedData); // This is the encrypted string
   return (
     <>
-      <Navbar />
+      <Navbar isUser={false} />
       <div className="banner-container">
         <img src="../home.webp" alt="img" className="banner-img" />
         <div className="register-component">
