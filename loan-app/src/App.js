@@ -14,7 +14,8 @@ import Error500 from "./pages/statusPages/Error500";
 import Dashboard from "./pages/userPages/Dashboard";
 import UserProfileDetails from "./pages/userPages/UserProfile";
 import EditProfileForm from "./pages/userPages/EditProfile";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./pages/adminPages/AdminDashboard";
+import AdminLogin from "./pages/adminPages/AdminLogin";
 
 function App() {
   useEffect(() => {
@@ -23,6 +24,10 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* admin routes */}
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard/>} />
         {/* login routes */}
         <Route exact path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
@@ -96,8 +101,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/kyc" element={<KYCVerification />} />
 
-        {/* Admin routes */}
-        <Route path="/admin-dashboard" element={<AdminDashboard/>} />
+       
+        
         
       </Routes>
     </Router>

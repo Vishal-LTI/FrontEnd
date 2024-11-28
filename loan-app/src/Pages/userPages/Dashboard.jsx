@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../Components/Layout";
 import NumberCard from "../../atoms/NumberCard";
 import TableComponent from "../../Components/TableComponent";
 import DonutChartComponent from "../../atoms/DonutChart";
+import { setLoginStatus } from "../../features/auth/authSlice";
+import { useDispatch } from "react-redux";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(setLoginStatus());
+  },[])
   const handleView = (rowIndex) => {
     console.log("View row:", rowIndex);
   };

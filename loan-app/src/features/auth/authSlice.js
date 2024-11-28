@@ -16,6 +16,7 @@ const initialState = {
   success: false,
   otpSent: false,
   otpVerified: false,
+  isLoggedIn:false
 };
 
 const authSlice = createSlice({
@@ -30,9 +31,13 @@ const authSlice = createSlice({
       state.error = null;
       state.otpSent = false;
       state.otpVerified = false;
+      state.isLoggedIn = false;
     },
     setCredentials: (state, { payload }) => {
       state.userInfo = payload;
+    },
+    setLoginStatus:(state) => {
+      state.isLoggedIn = true;
     },
   },
   extraReducers: (builder) => {
@@ -86,6 +91,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout, setCredentials } = authSlice.actions;
+export const { logout, setCredentials, setLoginStatus } = authSlice.actions;
 
 export default authSlice.reducer;
