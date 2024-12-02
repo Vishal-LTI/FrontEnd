@@ -126,7 +126,7 @@ console.log('encryptedData', encryptedData); // This is the encrypted string
       <div className="banner-container">
         <img src="../home.webp" alt="img" className="banner-img" />
         <div className="register-component">
-          <div className="mb-3 mt-5" style={{ marginLeft: "150px" }}>
+          {/* <div className="mb-3 mt-5" style={{ marginLeft: "150px" }}>
             <PrimaryButton
               type="submit"
               label="Login"
@@ -141,7 +141,7 @@ console.log('encryptedData', encryptedData); // This is the encrypted string
               btnColor="#db0011"
               onClick={handleRegister}
             />
-          </div>
+          </div> */}
         </div>
       </div>
 

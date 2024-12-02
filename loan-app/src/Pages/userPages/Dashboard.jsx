@@ -110,7 +110,7 @@ const Dashboard = () => {
         <div className="row">
           <div className="col-md-12">
             <div className="d-flex">
-              <DonutChartComponent data={chartData} />
+              <DonutChartComponent data={chartData} title={"Principal vs Interest"} />
               <div
                 className="card"
                 style={{ marginLeft: "20px", width: "600px" }}

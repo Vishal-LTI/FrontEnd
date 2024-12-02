@@ -17,6 +17,7 @@ import EditProfileForm from "./pages/userPages/EditProfile";
 import AdminDashboard from "./pages/adminPages/AdminDashboard";
 import AdminLogin from "./pages/adminPages/AdminLogin";
 import LoanDetails from "./pages/adminPages/LoanDetails";
+import LoanApplications from "./pages/adminPages/LoanApplications";
 
 function App() {
   useEffect(() => {
@@ -30,6 +31,8 @@ function App() {
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard/>} />
         <Route path="/admin/loan-details" element={<LoanDetails />} />
+        <Route path="/admin/loan-applications" element={<LoanApplications />} />
+       
         {/* login routes */}
         <Route exact path="/" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
