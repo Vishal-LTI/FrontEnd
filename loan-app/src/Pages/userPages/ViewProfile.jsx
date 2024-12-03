@@ -6,7 +6,7 @@
 // import { useDispatch, useSelector } from "react-redux";
 // import { useGetUserDetailsQuery } from "../services/auth/authService";
 // import { setCredentials } from "../features/auth/authSlice";
-// import Layout from "../Components/Layout";
+// import Layout from "../components/Layout";
 // import InfoBlock from "../atoms/InfoBlock";
 // import TitleCard from "../atoms/TitleCard";
 // const ViewProfilePage = () => {

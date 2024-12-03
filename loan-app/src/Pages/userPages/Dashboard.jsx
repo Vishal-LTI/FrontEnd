@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Layout from "../../Components/Layout";
+import Layout from "../../components/Layout";
 import NumberCard from "../../atoms/NumberCard";
-import TableComponent from "../../Components/TableComponent";
+import TableComponent from "../../components/TableComponent";
 import DonutChartComponent from "../../atoms/DonutChart";
 import { setLoginStatus } from "../../features/auth/authSlice";
 import { useDispatch } from "react-redux";
