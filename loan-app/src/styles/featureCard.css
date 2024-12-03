@@ -1,0 +1,45 @@
+.card-img{
+   width: 100px;
+   height: 100px;
+    margin: 10px 50px;
+}
+
+.card-description{
+    text-align: justify;
+}
+
+
+/* featureCard.css */
+.feature-card {
+    width: 18rem;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  
+  
+  .feature-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px;
+  }
+  
+  .feature-card-title {
+    color: #97281d;
+  }
+  
+  .feature-card-text {
+    flex: 1;
+  }
+  
+  .feature-card-button {
+    margin-top: auto;
+    bottom: 15px;
+    left: 50%;
+    
+    width: 100%;
+  }
+  
