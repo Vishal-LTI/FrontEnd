@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { applyLoan } from "../../features/auth/authActions";
-import Layout from "../../components/Layout";
+import Layout from "../../Components/Layout";
 
 const ApplyLoan = () => {
   const dispatch = useDispatch();

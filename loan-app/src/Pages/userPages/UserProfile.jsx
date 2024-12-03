@@ -9,7 +9,7 @@ import {
   Button,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Layout from "../../components/Layout";
+import Layout from "../../Components/Layout";
 
 const UserProfileDetails = () => {
   return (

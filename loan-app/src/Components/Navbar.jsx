@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/navbar.css";
+import "../Styles/navbar.css";
 
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import '../styles/sidebar.css';
+import '../Styles/sidebar.css';
 
 const Sidebar = ({isAdmin = false}) => {
   const location = useLocation();

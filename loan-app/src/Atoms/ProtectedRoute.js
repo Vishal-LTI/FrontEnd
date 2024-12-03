@@ -2,8 +2,8 @@
 
 import { useSelector } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
-import "../styles/protectedRoutes.css";
-import Error401 from "../pages/statusPages/Error401";
+import "../Styles/protectedRoutes.css";
+import Error401 from "../Pages/statusPages/Error401";
 
 
 const ProtectedRoute = () => {

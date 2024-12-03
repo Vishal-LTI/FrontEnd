@@ -1,14 +1,14 @@
 // import React, { useEffect } from "react";
 // import "bootstrap/dist/css/bootstrap.min.css";
-// import "../styles/viewProfile.css";
-// import NavbarMenu from "../atoms/Navbar";
-// import Footer from "../atoms/Footer";
+// import "../Styles/viewProfile.css";
+// import NavbarMenu from "../Atoms/Navbar";
+// import Footer from "../Atoms/Footer";
 // import { useDispatch, useSelector } from "react-redux";
 // import { useGetUserDetailsQuery } from "../services/auth/authService";
 // import { setCredentials } from "../features/auth/authSlice";
-// import Layout from "../components/Layout";
-// import InfoBlock from "../atoms/InfoBlock";
-// import TitleCard from "../atoms/TitleCard";
+// import Layout from "../Components/Layout";
+// import InfoBlock from "../Atoms/InfoBlock";
+// import TitleCard from "../Atoms/TitleCard";
 // const ViewProfilePage = () => {
 //   const { userInfo } = useSelector((state) => state.auth)
 //   const dispatch = useDispatch()

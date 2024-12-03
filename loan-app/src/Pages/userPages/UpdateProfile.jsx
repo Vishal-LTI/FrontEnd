@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../../styles/viewProfile.css";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-import Layout from "../../components/Layout";
+import "../../Styles/viewProfile.css";
+import Navbar from "../../Components/Navbar";
+import Footer from "../../Components/Footer";
+import Layout from "../../Components/Layout";
 
 const UpdateProfilePage = () => {
   // Dummy data for user profile

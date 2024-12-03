@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../../components/Navbar";
-import "../../styles/home.css";
-import FeatureCard from "../../components/FeatureCard";
-import Accordion from "../../atoms/Accordion";
-import Footer from "../../components/Footer";
-import PrimaryButton from "../../atoms/PrimaryButton";
+import Navbar from "../../Components/Navbar";
+import "../../Styles/home.css";
+import FeatureCard from "../../Components/FeatureCard";
+import Accordion from "../../Atoms/Accordion";
+import Footer from "../../Components/Footer";
+import PrimaryButton from "../../Atoms/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import CryptoJS from 'crypto-js';
 const accordionData = [

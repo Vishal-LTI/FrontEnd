@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import "../../styles/login.css"; // Assuming you have some custom styles
-import PrimaryButton from "../../atoms/PrimaryButton";
+import "../../Styles/login.css"; // Assuming you have some custom styles
+import PrimaryButton from "../../Atoms/PrimaryButton";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../features/auth/authActions";
 

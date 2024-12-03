@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/accordion.css";
+import "../Styles/accordion.css";
 
 const Accordion = ({ title, description, color, bgColor, btnTitle, btnUrl }) => {
   const [show, setShow] = useState(false);

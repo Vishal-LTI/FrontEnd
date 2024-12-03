@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/numberCard.css";
+import "../Styles/numberCard.css";
 
 const NumberCard = ({ title, value, imgUrl }) => {
   return (

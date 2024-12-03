@@ -1,23 +1,23 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/userPages/Home";
-import Login from "./pages/userPages/Login";
-import Register from "./pages/userPages/Register";
-import EMICalculator from "./components/calculator/EmiCalculator";
-import PrepaymentCalculator from "./components/calculator/PrepaymentCalculator";
-import ViewLoanDetails from "./pages/userPages/ViewLoanDetails";
-import KYCVerification from "./pages/userPages/KYCVerification";
-import ApplyLoan from "./pages/userPages/ApplyLoan";
-import ProtectedRoute from "./atoms/ProtectedRoute";
-import Error404 from "./pages/statusPages/Error404";
-import Error500 from "./pages/statusPages/Error500";
-import Dashboard from "./pages/userPages/Dashboard";
-import UserProfileDetails from "./pages/userPages/UserProfile";
-import EditProfileForm from "./pages/userPages/EditProfile";
-import AdminDashboard from "./pages/adminPages/AdminDashboard";
-import AdminLogin from "./pages/adminPages/AdminLogin";
-import LoanDetails from "./pages/adminPages/LoanDetails";
-import LoanApplications from "./pages/adminPages/LoanApplications";
+import Home from "./Pages/userPages/Home";
+import Login from "./Pages/userPages/Login";
+import Register from "./Pages/userPages/Register";
+import EMICalculator from "./Components/Calculator/EmiCalculator";
+import PrepaymentCalculator from "./Components/Calculator/PrepaymentCalculator";
+import ViewLoanDetails from "./Pages/userPages/ViewLoanDetails";
+import KYCVerification from "./Pages/userPages/KYCVerification";
+import ApplyLoan from "./Pages/userPages/ApplyLoan";
+import ProtectedRoute from "./Atoms/ProtectedRoute";
+import Error404 from "./Pages/statusPages/Error404";
+import Error500 from "./Pages/statusPages/Error500";
+import Dashboard from "./Pages/userPages/Dashboard";
+import UserProfileDetails from "./Pages/userPages/UserProfile";
+import EditProfileForm from "./Pages/userPages/EditProfile";
+import AdminDashboard from "./Pages/adminPages/AdminDashboard";
+import AdminLogin from "./Pages/adminPages/AdminLogin";
+import LoanDetails from "./Pages/adminPages/LoanDetails";
+import LoanApplications from "./Pages/adminPages/LoanApplications";
 
 function App() {
   useEffect(() => {

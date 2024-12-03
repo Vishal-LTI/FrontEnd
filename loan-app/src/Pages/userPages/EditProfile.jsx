@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Container, Row, Col, Card, Form, Button, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Layout from '../../components/Layout';
+import Layout from '../../Components/Layout';
 
 // Validation schema
 const schema = yup.object().shape({

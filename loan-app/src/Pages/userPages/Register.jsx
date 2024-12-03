@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import PrimaryButton from "../../atoms/PrimaryButton";
+import PrimaryButton from "../../Atoms/PrimaryButton";
 import { registerUser, sendOtp } from "../../features/auth/authActions";
 
 const Register = () => {
