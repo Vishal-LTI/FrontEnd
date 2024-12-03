@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../../Components/Layout";
-import TableComponent from "../../Components/TableComponent";
+import Layout from "../../components/Layout";
+import TableComponent from "../../components/TableComponent";
 
 const LoanApplications = () => {
   // Data for the loan details table

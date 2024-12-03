@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Table, Container, Card, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaEye, FaDownload } from "react-icons/fa";
-import LoanDocumentsTable from "../../Components/LoanTable";
+import LoanDocumentsTable from "../../components/LoanTable";
 import InfoBlock from "../../atoms/InfoBlock";
 import TitleCard from "../../atoms/TitleCard";
-import RejectModal from "../../Components/RejectModal";
-import AdminNavbarMenu from "../../Components/AdminNavbar";
-import Layout from "../../Components/Layout";
+import RejectModal from "../../components/RejectModal";
+import AdminNavbarMenu from "../../components/AdminNavbar";
+import Layout from "../../components/Layout";
 
 const LoanDetails = () => {
   const [showModal, setShowModal] = useState(false);

@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "../../Components/Navbar";
+import Navbar from "../../components/Navbar";
 import "../../styles/home.css";
-import FeatureCard from "../../Components/FeatureCard";
+import FeatureCard from "../../components/FeatureCard";
 import Accordion from "../../atoms/Accordion";
-import Footer from "../../Components/Footer";
+import Footer from "../../components/Footer";
 import PrimaryButton from "../../atoms/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import CryptoJS from 'crypto-js';
