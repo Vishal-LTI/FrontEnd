@@ -1,0 +1,36 @@
+{
+  "faq": [
+    {
+      "question": "What is meant by an EMI?",
+      "answer": "EMI stands for Equated Monthly Installments which a borrower pays regularly to the lender in return for the principal and the interest accrued on it. The total payment amount that is the loan amount and the accrued interest, is divided equally by the loan tenure to calculate EMI. The EMIs is to be paid till the total repayment of loan is not done."
+    },
+    {
+      "question": "What are the benefits of EMI?",
+      "answer": "EMI helps in reducing the financial burden from the borrower as he doesn’t have to pay the loan amount back at once. It helps to the borrower to fulfill their luxury dreams by purchasing things in an EMI as they don’t have to make an upfront expense. EMI is easy on the wallet and has flexibility as it lets us decide our EMI amount or tenure."
+    },
+    {
+      "question": "What is the loan tenure?",
+      "answer": "Whenever we take loans for anything be it home loan, car loan, personal loan, we have to pay it through EMI over a specified period called Loan Tenure. The shorter the loan tenure, higher the EMIs will be and vice versa. So, it is advised to choose a reasonable duration so as to avoid paying high EMIs."
+    },
+    {
+      "question": "How is interest rate determined in EMIs?",
+      "answer": "The Education loan interest rate is the rate charges on the loan by the lender. It can be fixed or floating. If its fixed, then the EMI amount will be same every month. However, if you have opted for floating interest rate then the EMI can be affected positively or negatively depending upon the interest rate movement."
+    },
+    {
+      "question": "How is EMI calculated?",
+      "answer": "EMI calculation is dependent on 3 things; loan amount, interest rate and tenure of the repayment. The interest rate is calculated per month instead of per annum as the EMI is monthly payment. Then the total loan amount and interest amount is divided by the tenure (number of months) to calculate EMI. However, we don’t need to remember any formula to calculate it as we have made an online EMI calculator for your convenience."
+    },
+    {
+      "question": "How to use this online EMI calculator?",
+      "answer": "To use EMI calculator online you need to enter 3 things, i.e., loan amount, the interest rate and the loan tenure. After entering the values, you will get the EMI amount which you need to pay monthly and the breakup of total loan value and interest value in the pie-chart."
+    }
+  ],
+  "loanCalculators": {
+      "carType": "Car Loan EMI Calculator",
+      "carDescription": "India is currently the world’s 4th largest market for 4-wheelers. Growth has been steady at 9.5% year-on-year. It is no wonder that the demand for a reliable and easy to use car loan EMI calculator has also skyrocketed. While the Internet is flooded with calculators determining car loan EMIs, simplicity is the key that make it stand out. Groww brings you the best and easy to use EMI calculating tool which will help you take an informed decision on how much funding you need to purchase your dream car, how much your EMIs are likely to be and other details.",
+      "homeType": "Home Loan EMI Calculator",
+      "homeDescription": "Given the high price of real estate in India, purchasing a house can be a challenging task without an external source of finance. An increasing number of prospective home buyers are opting for this type of credit to fund their house purchase. It is no surprise that housing credit grew by over 16% in FY18. The primary responsibility of a potential borrower is to have an exact estimate of the EMI amount they are liable to pay. One can take advantage of a home loan EMI calculator to arrive at the precise number.",
+      "personalType": "Personal Loan EMI Calculator",
+      "personalDescription": "Personal loan is the most commonly availed loan product in the Indian debt industry. Over 78% of all credits availed in India fall under this category. The unsecured nature of these loans makes them a popular choice among prospective borrowers. Individuals planning to avail such credits must be familiar with certain aspects before they finalise their decision. The first and primary loan feature a prospective borrower must decide is the EMI amount they will pay towards the repayment of the loan. The best way to calculate and determine EMIs is by using a personal loan EMI calculator."
+    }
+}
