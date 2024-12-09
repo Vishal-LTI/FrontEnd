@@ -12,7 +12,8 @@
 /* featureCard.css */
 .feature-card {
     width: 18rem;
-    margin: 15px;
+    border: none;
+    margin: 0px 15px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
