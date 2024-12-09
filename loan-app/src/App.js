@@ -18,7 +18,7 @@ import AdminDashboard from "./Pages/adminPages/AdminDashboard";
 import AdminLogin from "./Pages/adminPages/AdminLogin";
 import LoanDetails from "./Pages/adminPages/LoanDetails";
 import LoanApplications from "./Pages/adminPages/LoanApplications";
-
+import data from './Constant/data.json'
 function App() {
   useEffect(() => {
     document.title = "Loan App";
@@ -52,6 +52,7 @@ function App() {
               interestRate="8.5"
               minTenuare="10"
               maxTenuare="30"
+              description={data.loanCalculators?.homeDescription}
             />
           }
         />
@@ -63,6 +64,7 @@ function App() {
               interestRate="9"
               minTenuare="1"
               maxTenuare="7"
+              description={data.loanCalculators?.carDescription}
             />
           }
         />
@@ -74,6 +76,7 @@ function App() {
               interestRate="10"
               minTenuare="1"
               maxTenuare="10"
+              description={data.loanCalculators?.personalDescription}
             />
           }
         />

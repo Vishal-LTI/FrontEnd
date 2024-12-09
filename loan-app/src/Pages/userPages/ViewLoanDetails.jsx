@@ -18,9 +18,8 @@ const ViewLoanDetails = () => {
       <div className="container my-5">
         <div className="card shadow">
           <h5
-            className="card-title text-center"
+            className="card-title text-center text-white"
             style={{
-              color: "#ffffff",
               background: "#db0011",
               borderRadius: "5px 5px 0px 0px",
               padding: "10px",
@@ -30,13 +29,13 @@ const ViewLoanDetails = () => {
           </h5>
           <div className="card-body">
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-6 mb-3">
                 <p><strong>Loan Amount:</strong> ₹{loanDetails.loanAmount}</p>
                 <p><strong>Tenure (Years):</strong> {loanDetails.tenureInYears}</p>
                 <p><strong>Tenure (Months):</strong> {loanDetails.tenureInMonths}</p>
                 <p><strong>EMI Debited Date:</strong> {loanDetails.emiDebitedDate}</p>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 mb-3">
                 <p><strong>Interest Rate (%):</strong> {loanDetails.interest}</p>
                 <p><strong>User ID:</strong> {loanDetails.user}</p>
                 <p><strong>Loan Type:</strong> {loanDetails.loanType}</p>
