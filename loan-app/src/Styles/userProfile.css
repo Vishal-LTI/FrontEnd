@@ -1,0 +1,33 @@
+.profile-tabs .nav-tabs{
+    display: flex;
+    overflow-x: auto;
+}
+.profile-tabs .nav-item , .profile-tabs .nav-link{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 155px;
+    display: inline-block;
+}
+.profile-tabs .nav-link.active, .profile-tabs .nav-link.active:hover{
+    background-color: #db0011 !important;
+    color: #fff !important;
+}
+.profile-tabs .title-tab:hover{
+    cursor: pointer;
+    color: #a5020f;
+}
+.tabs-card-body{
+    border: 0px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.abc{
+    color: red;
+    border: none;
+}
+@media(max-width: 900px) {
+    .profile-tabs .nav-item {
+      width: 100%;
+      max-width: 100%;
+    }
+}
