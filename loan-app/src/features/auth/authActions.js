@@ -80,34 +80,3 @@ export const sendOtp = createAsyncThunk(
     }
   }
 );
-
-// Apply for Loan
-export const applyLoan = createAsyncThunk(
-  "loan/apply",
-  async (
-    { loanAmount, tenureInYears, userId, loanTypeId, loanStatusId },
-    { rejectWithValue }
-  ) => {
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiVVNFUiIsImZ1bGxOYW1lIjoiVmlzaGFsIEJhbnNvZGUiLCJ1c2VySWQiOjEsInVzZXJuYW1lIjoidmlzaGFsYmFuc29kZTAzQGdtYWlsLmNvbSIsInN1YiI6InZpc2hhbGJhbnNvZGUwM0BnbWFpbC5jb20iLCJpYXQiOjE3MzI2MjE3MTYsImV4cCI6MTczMjYyMjYxNn0.t-2VKAy9Ctl2W1ufVoE2m8B-C17wVOkik1jDfRBjjIQ",
-        },
-      };
-      const { data } = await axios.post(
-        `${backendURL}/loan/apply?userId=1`,
-        { loanAmount, tenureInYears, userId, loanTypeId, loanStatusId },
-        config
-      );
-      return data;
-    } catch (error) {
-      if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
-      } else {
-        return rejectWithValue(error.message);
-      }
-    }
-  }
-);
