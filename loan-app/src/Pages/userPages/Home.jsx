@@ -131,7 +131,7 @@ console.log('encryptedData', encryptedData); // This is the encrypted string
       </div>
 
       <h4>Features and Benefits</h4>
-      <div className="d-flex justify-between">
+      <div className="f-wrap d-flex justify-between">
         {featureData.map((feature, index) => (
           <FeatureCard
             key={index}
@@ -143,20 +143,22 @@ console.log('encryptedData', encryptedData); // This is the encrypted string
       </div>
 
       <div>
+      <div className="loan-desc">
         {accordionData.map((accordion, index) => (
           <Accordion
             key={index}
-            bgColor={"#db0011"}
-            color={"#ffffff"}
+            bgColor={"#fff0e5"}
+            color={"#23527c"}
             title={accordion.title}
             description={accordion.description}
             btnTitle={accordion.btnTitle}
           />
         ))}
       </div>
+      </div>
 
       <h4>Loan Calculators</h4>
-      <div className="d-flex">
+      <div className="d-flex f-wrap">
         {loanTypesData.map((loanType, index) => (
           <FeatureCard
             key={index}

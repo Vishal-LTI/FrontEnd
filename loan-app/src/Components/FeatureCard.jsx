@@ -10,13 +10,23 @@ const FeatureCard = ({ img, title, description, btnText, link }) => {
   };
 
   return (
-    <div className="card feature-card">
-      <img
+    <div className="container card feature-card">
+      <div class="card">
+      <div class="slide slide1">
+      <div class="content">
+        <div class="icon">
+        <img
         src={img}
         className="card-img-top card-img"
         alt={title}
       />
-      <div className="card-body d-flex flex-column">
+        </div>
+    </div>
+</div>
+
+<div class="slide slide2">
+    <div class="content">
+    <div className="card-body d-flex flex-column">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{description}</p>
         {btnText && (
@@ -29,7 +39,12 @@ const FeatureCard = ({ img, title, description, btnText, link }) => {
         )}
       </div>
     </div>
+</div>
+</div>
+    </div>
+    
   );
 };
 
 export default FeatureCard;
+
