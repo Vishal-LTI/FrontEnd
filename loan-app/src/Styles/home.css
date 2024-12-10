@@ -66,6 +66,7 @@ h4 {
   top: 0;
   left: 0;
   height: 100%;
+  width: 100%;
   background: #fff;
   border: 1px solid #db0011;
   display: flex ;
@@ -141,6 +142,35 @@ h4 {
   box-shadow: none;
 }
 
-@media(max-width: 1064px) {
+@media(max-width: 1100px) {
+  .f-wrap { 
+    flex-wrap: wrap;
+  }
+}
 
+@media(max-width: 967px) {
+  .banner-img {
+    height: 100%;
+  }
+  .loan-desc .accordion {
+    width: 100%;
+}
+}
+
+@media(max-width: 640px) {
+  .navbar .nav-title {
+    font-size: medium;
+}
+.feature-card {
+  width: 100% !important;
+}
+.container .card .slide {
+  height: 150px;
+}
+.container .card .slide.slide2 {
+  transform: translateY(-50px);
+}
+.container .card {
+  margin-bottom: 1rem;
+}
 }
