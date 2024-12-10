@@ -140,3 +140,7 @@ h4 {
 .accordion-button:focus{
   box-shadow: none;
 }
+
+@media(max-width: 1064px) {
+
+}
