@@ -98,7 +98,6 @@ function App() {
 
         {/* profile routes */}
         <Route path="/view-profile" element={<UserProfileDetails />} />
-        <Route path="/edit-profile" element={<EditProfileForm />} />
         <Route element={<ProtectedRoute />}>
         
         </Route>

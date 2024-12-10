@@ -21,10 +21,13 @@
     border: 0px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.abc{
-    color: red;
-    border: none;
+.section_header{
+    border-radius: 10px;
 }
+.section_title{
+    margin: 5px;
+}
+
 @media(max-width: 900px) {
     .profile-tabs .nav-item {
       width: 100%;

@@ -36,8 +36,6 @@ const Sidebar = ({isAdmin = false}) => {
         <i className='bi bi-grid'></i> Dashboard</Link>
         <Link className={`nav-link ${location.pathname === '/view-profile' ? 'active' : ''}`} to="/view-profile">
         <i className='bi bi-person'></i> Profile</Link>
-        <Link className={`nav-link ${location.pathname === '/edit-profile' ? 'active' : ''}`} to="/edit-profile">
-        <i className='bi bi-pencil'></i> Update Profile</Link>
         <Link className={`nav-link ${location.pathname === '/apply-loan' ? 'active' : ''}`} to="/apply-loan">
         <i className='bi bi-pencil-square'></i> Apply for Loan</Link>
         <Link className={`nav-link ${location.pathname === '/view-loan-details' ? 'active' : ''}`} to="/view-loan-details">
