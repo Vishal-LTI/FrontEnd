@@ -6,7 +6,6 @@ import AdminNavbarMenu from './AdminNavbar';
 import "../Styles/layout.css";
 
 const Layout = ({ children, isUser = true}) => {
-  console.log("isUser", isUser)
   return (
     <div className="min-vh-100">  
     {

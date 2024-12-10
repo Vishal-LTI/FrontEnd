@@ -25,7 +25,7 @@
 
   .sidebar .nav-link:hover {
     cursor: pointer;
-    color: #a5020f !important;
+    color: #a5020f;
   }
   
   .sidebar hr {
