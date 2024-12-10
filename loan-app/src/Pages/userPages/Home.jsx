@@ -162,8 +162,8 @@ console.log('encryptedData', encryptedData); // This is the encrypted string
         {accordionData.map((accordion, index) => (
           <Accordion
             key={index}
-            bgColor={"#d1d1d1"}
-            color={"#ef7c00"}
+            bgColor={"#fff0e5"}
+            color={"#23527c"}
             title={accordion.title}
             description={accordion.description}
             btnTitle={accordion.btnTitle}
