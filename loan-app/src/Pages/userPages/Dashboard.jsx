@@ -8,19 +8,23 @@ import { useDispatch } from "react-redux";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  useEffect(()=>{
+
+  useEffect(() => {
     dispatch(setLoginStatus());
-  },[])
+  }, [dispatch]);
+
   const handleView = (rowIndex) => {
     console.log("View row:", rowIndex);
   };
+
   const handleEdit = (rowIndex) => {
     console.log("Edit row:", rowIndex);
   };
+
   const handleDelete = (rowIndex) => {
     console.log("Delete row:", rowIndex);
   };
-  // Data for the cards
+
   const loanDetails = {
     totalLoanAmount: 1000000,
     principal: 800000,
@@ -51,7 +55,7 @@ const Dashboard = () => {
     {
       title: "Total Loan Amount",
       value: `₹${loanDetails.totalLoanAmount.toFixed(0)}`,
-      imgUrl:'./Kyc.jpg'
+      imgUrl: './Kyc.jpg'
     },
     {
       title: "Outstanding Amount",
@@ -68,7 +72,6 @@ const Dashboard = () => {
     },
   ];
 
-  // Data for the loan details table
   const loanDetailsHeader = [
     "Sr.No",
     "Name",
@@ -85,7 +88,6 @@ const Dashboard = () => {
     ["1", "John", "Personal", "L001", "1000000", "8.5%", "20", "1000", "200"],
   ];
 
-  // Data for the amortization table
   const amortizationHeader = ["Sr.No", "Date", "EMI"];
   const amortizationData = [
     ["1", "2023-10-15", "1000"],
@@ -100,21 +102,20 @@ const Dashboard = () => {
   return (
     <Layout>
       <div className="container my-5">
-        <div className="row mb-4 d-flex">
+        <div className="row mb-4">
           {cardData.map((card, index) => (
-            <div key={index} className="col-md-3 mb-3">
+            <div key={index} className="col-md-3 col-sm-6 mb-3">
               <NumberCard title={card.title} value={card.value} />
             </div>
           ))}
         </div>
         <div className="row">
-          <div className="col-md-12">
-            <div className="d-flex">
-              <DonutChartComponent data={chartData} title={"Principal vs Interest"} />
-              <div
-                className="card"
-                style={{ marginLeft: "20px", width: "600px" }}
-              >
+          <div className="col-12">
+            <div className="d-flex flex-column flex-md-row">
+              <div className="card ms-md-4 mt-3 mt-md-0 w-100">
+              <DonutChartComponent data={chartData} title="Principal vs Interest" />
+              </div>
+              <div className="card ms-md-4 mt-3 mt-md-0 w-100">
                 <div className="card-body">
                   <h5 className="card-title">Amortization</h5>
                   <TableComponent
@@ -127,8 +128,8 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="row mt-3">
-          <div className="col-md-12">
-            <div className="card mb-4">
+          <div className="col-12">
+            <div className="card">
               <div className="card-body">
                 <h5 className="card-title">Loan Details</h5>
                 <TableComponent
@@ -142,7 +143,6 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="row"></div>
       </div>
     </Layout>
   );

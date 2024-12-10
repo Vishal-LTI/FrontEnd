@@ -5,7 +5,16 @@ import "../../Styles/calculator.css";
 import Navbar from "../Navbar";
 import { Link } from "react-router-dom";
 import Footer from "../Footer";
-const EMICalculator = ({ interestRate, minTenuare, maxTenuare, title }) => {
+import Tabs from "../../Atoms/Tabs";
+import Accordion from "../../Atoms/Accordion";
+import data from "../../Constant/data.json";
+const EMICalculator = ({
+  interestRate,
+  minTenuare,
+  maxTenuare,
+  title,
+  description,
+}) => {
   const [amount, setAmount] = useState(0);
   const [rate, setRate] = useState(interestRate);
   const [tenure, setTenure] = useState(0);
@@ -41,135 +50,145 @@ const EMICalculator = ({ interestRate, minTenuare, maxTenuare, title }) => {
     });
   };
 
+  const faqData = data.faq;
+
   return (
     <>
       <Navbar />
+      <div className="container my-4">
+        <Tabs />
 
-      <div className="container">
-        <h2 className="text-center my-4">{title}</h2>
-        <div className="box">
-          <div className="card p-4 first">
-            <div className="form-group mb-3">
-              <div className="box">
-                <label htmlFor="loanAmount" className="first">
+        <h2 className="text-center mb-4 mt-4">{title}</h2>
+        <p>{description}</p>
+        <div className="row">
+          <div className="col-md-6 mb-4">
+            <div className="card p-4">
+              <div className="form-group mb-3">
+                <label htmlFor="loanAmount" className="form-label">
                   Loan Amount:
                 </label>
                 <input
                   type="number"
-                  className="form-control first"
+                  className="form-control"
                   id="loanAmount"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
                 />
+                <input
+                  type="range"
+                  className="form-range mt-2"
+                  id="loanAmountRange"
+                  min="10000"
+                  max="1000000"
+                  step="1000"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                />
               </div>
-              <input
-                type="range"
-                className="form-range mt-2"
-                id="loanAmountRange"
-                min="10000"
-                max="1000000"
-                step="1000"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-              />
-            </div>
-            <div className="form-group mb-3">
-              <div className=" box">
-                <label htmlFor="interestRate" className="first">
+              <div className="form-group mb-3">
+                <label htmlFor="interestRate" className="form-label">
                   Interest Rate (Annual %):
                 </label>
                 <input
                   type="number"
-                  className="form-control first"
+                  className="form-control"
                   id="interestRate"
                   value={rate}
                   onChange={(e) => setRate(e.target.value)}
                 />
+                <input
+                  type="range"
+                  className="form-range mt-2"
+                  id="interestRateRange"
+                  min="1"
+                  max="20"
+                  step="0.1"
+                  value={rate}
+                  onChange={(e) => setRate(e.target.value)}
+                />
               </div>
-              <input
-                type="range"
-                className="form-range mt-2"
-                id="interestRateRange"
-                min="1"
-                max="20"
-                step="0.1"
-                value={rate}
-                onChange={(e) => setRate(e.target.value)}
-              />
-            </div>
-            <div className="form-group mb-3">
-              <div className="box">
-                <label htmlFor="tenure" className="first">
+              <div className="form-group mb-3">
+                <label htmlFor="tenure" className="form-label">
                   Tenure (Years):
                 </label>
                 <input
                   type="number"
-                  className="form-control first"
+                  className="form-control"
                   id="tenure"
                   value={tenure}
                   onChange={(e) => setTenure(e.target.value)}
                 />
+                <input
+                  type="range"
+                  className="form-range mt-2"
+                  id="tenureRange"
+                  min={minTenuare}
+                  max={maxTenuare}
+                  step="1"
+                  value={tenure}
+                  onChange={(e) => setTenure(e.target.value)}
+                />
               </div>
-              <input
-                type="range"
-                className="form-range mt-2"
-                id="tenureRange"
-                min={minTenuare}
-                max={maxTenuare}
-                step="1"
-                value={tenure}
-                onChange={(e) => setTenure(e.target.value)}
-              />
+              <button className="btn btn-danger w-100" onClick={calculateEMI}>
+                Calculate EMI
+              </button>
             </div>
-            <button className="btn btn-danger w-100" onClick={calculateEMI}>
-              Calculate EMI
-            </button>
           </div>
-          <div style={{ width: "50%" }}>
-            {emi > 0 && (
-              <div className="text-center mt-4">
-                <div style={{ width: "60%", marginLeft: "50px" }}>
-                  <Doughnut data={chartData} />
+          <div className="col-md-6 mb-4">
+            <div className="card p-4">
+              <div className="d-md-flex  d-xl-flex mt-5 text-sm-center text-md-left text-xl-left">
+                <div style={{ margin: "70px 0px" }} className="">
+                  <p>
+                    <b>EMI:</b> {emi} per month
+                  </p>
+                  <p>
+                    <b>Principal Amount:</b> {amount}
+                  </p>
+                  <p>
+                    <b>Total Interest:</b> {interestAmount}
+                  </p>
+                  <p>
+                    <b>Total Amount:</b> {total}
+                  </p>
+                </div>
+                <div className="d-flex justify-content-center">
+                  {/* style={{margin:'20px'}} */}
+                  {emi > 0 && (
+                    <div
+                      className="text-center mb-4"
+                      style={{ width: 250, height: 250 }}
+                    >
+                      <Doughnut data={chartData} />
+                    </div>
+                  )}
                 </div>
               </div>
-            )}
-            <div style={{ margin: "50px", width: "50%" }}>
-              <p>
-                <b>EMI:</b> {emi} per month
-              </p>
-              <p>
-                <b>Principal Amount:</b> {amount}
-              </p>
-              <p>
-                <b>Total Interest:</b> {interestAmount}
-              </p>
-              <p>
-                <b>Total Amount:</b> {total}
-              </p>
             </div>
           </div>
-          <div className="mt-5 mb-4">
-            <h4>Most Popular Calculators</h4>
-            <ul style={{ listStyle: "none" }}>
-              <li>
-                <Link to="/home-loan-emicalculator">Home Loan Calculator</Link>
-              </li>
-              <li>
-                <Link to="/car-loan-emicalculator">Car Loan Calculator</Link>
-              </li>
-              <li>
-                <Link to="/personal-loan-emicalculator">
-                  Personal Loan Calculator
-                </Link>
-              </li>
-              <li>
-                <Link to="/gold-loan-emicalculator">Gold Loan Calculator</Link>
-              </li>
-             
-              <li>
-                <Link to="/prepaymentCalculator">Part Payment Calculator</Link>
-              </li>
-            </ul>
+        </div>
+        <div className="row">
+          <h3 className="mt-3 text-center mb-3">About HSBC EMI Calculator</h3>
+          <div className="col-md-6">
+            {faqData.slice(0, 3).map((faq, index) => (
+              <Accordion
+                key={index}
+                bgColor={"#db0011"}
+                color={"#ffffff"}
+                title={faq.question}
+                description={faq.answer}
+              />
+            ))}
+          </div>
+          <div className="col-md-6">
+            {faqData.slice(3).map((faq, index) => (
+              <Accordion
+                key={index}
+                bgColor={"#db0011"}
+                color={"#ffffff"}
+                title={faq.question}
+                description={faq.answer}
+              />
+            ))}
           </div>
         </div>
       </div>

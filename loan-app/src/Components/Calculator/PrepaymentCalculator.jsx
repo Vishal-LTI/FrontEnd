@@ -5,6 +5,7 @@ import "../../Styles/calculator.css";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { Link } from "react-router-dom";
+import Tabs from "../../Atoms/Tabs";
 const PrepaymentCalculator = () => {
   const [amount, setAmount] = useState(0);
   const [rate, setRate] = useState(8.5);
@@ -34,7 +35,7 @@ const PrepaymentCalculator = () => {
     const principal = parseFloat(amount);
     const prepaymentAmount = parseFloat(prepayment);
     const newPrincipal = principal - prepaymentAmount;
-    const tenureYears = parseFloat(tenure); 
+    const tenureYears = parseFloat(tenure);
 
     const emiValue = calculateEMI(newPrincipal, tenureYears);
     setEmi(emiValue.toFixed(0));
@@ -66,6 +67,7 @@ const PrepaymentCalculator = () => {
     <>
       <Navbar />
       <div className="container">
+        <Tabs />
         <h2 className="text-center my-4">Prepayment Calculator</h2>
         <div className="box">
           <div className="card p-4 first">
@@ -181,50 +183,29 @@ const PrepaymentCalculator = () => {
               </div>
             )}
             <div>
-            <div style={{ margin: "50px", width: "100%" }}>
-              <p>
-                <b>EMI:</b> {emi} per month
-              </p>
-              <p>
-                <b>Principal Amount:</b> {amount}
-              </p>
-              <p>
-                <b>Outstanding Amount:</b> {outStandingAmount}
-              </p>
-              <p>
-                <b>Total Interest:</b> {interestAmount}
-              </p>
-              <p>
-                <b>Interest Saved:</b> {save}
-              </p>
-              <p>
-                <b>Total Amount:</b> {total}
-              </p>
+              <div style={{ margin: "50px", width: "100%" }}>
+                <p>
+                  <b>EMI:</b> {emi} per month
+                </p>
+                <p>
+                  <b>Principal Amount:</b> {amount}
+                </p>
+                <p>
+                  <b>Outstanding Amount:</b> {outStandingAmount}
+                </p>
+                <p>
+                  <b>Total Interest:</b> {interestAmount}
+                </p>
+                <p>
+                  <b>Interest Saved:</b> {save}
+                </p>
+                <p>
+                  <b>Total Amount:</b> {total}
+                </p>
+              </div>
             </div>
           </div>
-          </div>
-          <div className="mt-5 mb-4">
-          <h4>Most Popular Calculators</h4>
-          <ul style={{listStyle:'none' }}>
-            <li>
-              <Link to="/home-loan-emicalculator">Home Loan Calculator</Link>
-            </li>
-            <li>
-              <Link to="/car-loan-emicalculator">Car Loan Calculator</Link>
-            </li>
-            <li>
-              <Link to="/personal-loan-emicalculator">
-                Personal Loan Calculator
-              </Link>
-            </li>
-            <li>
-              <Link to="/gold-loan-emicalculator">Gold Loan Calculator</Link>
-            </li>
-            
-          </ul>
         </div>
-        </div>
-        
       </div>
 
       <Footer />
