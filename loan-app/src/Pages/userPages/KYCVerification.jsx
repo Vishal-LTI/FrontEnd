@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar";
 import Layout from "../../Components/Layout";
+import { Container, Row } from "react-bootstrap";
 
 const KYCVerification = () => {
   const [showOtp, setShowOtp] = useState(false);
@@ -24,13 +25,9 @@ const KYCVerification = () => {
   return (
     <>
       <Layout>
-        <div>
-          <div
-            className="container"
-            style={{ maxWidth: "900px", marginTop: "50px" }}
-          >
-            <div className="card shadow" style={{ display: "flex" }}>
-              <div>
+            <Container className="mt-5">
+              <Row>
+              <div className="col-sm-12 col-md-6">
                 <h5
                   className="card-title text-center"
                   style={{
@@ -188,7 +185,10 @@ const KYCVerification = () => {
                       Submit
                     </button>
                   </form>
-                  <div>
+               
+                </div>
+              </div>
+              <div className="col-sm-12 col-md-6">
                     <img
                       src="/kyc.jpg"
                       style={{
@@ -197,12 +197,10 @@ const KYCVerification = () => {
                         marginLeft:'50px'
                       }}
                     />
-                  </div>
-                </div>
               </div>
-            </div>
-          </div>
-        </div>
+              </Row>
+             
+            </Container>
       </Layout>
     </>
   );

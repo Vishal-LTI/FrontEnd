@@ -107,7 +107,7 @@ const UserProfileDetails = () => {
             </Row>
           </Tab>
           <Tab eventKey="ContactInformation" title={
-            <span className="title-tab" title="Contact Information">
+            <span className="title-tab-even" title="Contact Information">
               Contact Information
             </span>
           }>
@@ -176,7 +176,7 @@ const UserProfileDetails = () => {
             </Row>
           </Tab>
           <Tab eventKey="EmploymentandIncomeDetails" title={
-            <span className="title-tab" title="Employment and Income Details">
+            <span className="title-tab-even" title="Employment and Income Details">
               Employment and Income Details
             </span>
           }>
