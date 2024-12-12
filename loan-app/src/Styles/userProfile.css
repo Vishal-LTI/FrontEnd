@@ -9,14 +9,6 @@
     width: 155px;
     display: inline-block;
 }
-.profile-tabs .nav-link.active, .profile-tabs .nav-link.active:hover{
-    background-color: #db0011 !important;
-    color: #fff !important;
-}
-.profile-tabs .title-tab:hover{
-    cursor: pointer;
-    color: #a5020f;
-}
 .tabs-card-body{
     border: 0px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -27,7 +19,34 @@
 .section_title{
     margin: 5px;
 }
-
+.profile-tabs .nav-link.active{
+    background-color: #dd0011 !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    z-index: 1;
+}
+.profile-tabs .nav-link{
+    color: #3d3d3d;
+    font-size: 13px;
+    background: #ebe7e7;
+    border: 0;
+    padding: 11px 25px;
+    align-items: center;
+    vertical-align: middle;
+    border: none !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 155px;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-right: 2px;
+    border-radius: 4px 4px 0 0;
+}
 @media(max-width: 900px) {
     .profile-tabs .nav-item {
       width: 100%;

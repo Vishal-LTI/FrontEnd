@@ -3,6 +3,9 @@ import { useForm } from "react-hook-form";
 import Footer from "../../Components/Footer";
 import Navbar from "../../Components/Navbar";
 import Layout from "../../Components/Layout";
+import { Container, Row, Card } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "../../Styles/editProfile.css";
 
 const KYCVerification = () => {
   const [showOtp, setShowOtp] = useState(false);
@@ -24,13 +27,11 @@ const KYCVerification = () => {
   return (
     <>
       <Layout>
-        <div>
-          <div
-            className="container"
-            style={{ maxWidth: "900px", marginTop: "50px" }}
-          >
-            <div className="card shadow" style={{ display: "flex" }}>
-              <div>
+            <Container className="mt-5">
+              <Row>
+              <Card className="tabs-card-body">
+              <Card.Body className="text-center row">
+              <div className="col-sm-12 col-md-6">
                 <h5
                   className="card-title text-center"
                   style={{
@@ -42,31 +43,22 @@ const KYCVerification = () => {
                 >
                   KYC Verification
                 </h5>
-                <div className="card-body" style={{display:'flex'}}>
+                <div className="">
                   <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="mb-3">
-                      <label htmlFor="panId" className="form-label">
-                        PAN ID
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="panId"
-                        placeholder="Enter PAN ID"
-                        {...register("panId", { required: true })}
-                      />
-                      {errors.panId && (
-                        <p className="text-danger">PAN ID is required</p>
-                      )}
+                      <div className="mb-3 col-sm-12 d-flex flex-column">
+                          <label className='inputLabel'>PAN ID</label>
+                          <input className='inputCmp' type="text"
+                            placeholder="Enter PAN ID"
+                            {...register("panId", { required: true })}
+                          />
+                          {errors.panId && (
+                            <p className="text-danger">PAN ID is required</p>
+                          )}
                     </div>
-                    <div className="d-flex">
-                      <div className="mb-3">
-                        <label htmlFor="aadharId" className="form-label">
-                          Aadhaar ID
-                        </label>
-                        <input
-                          type="text"
-                          className="form-control"
+                   <div className="d-flex">
+                   <div className="mb-3 col-md-9 col-sm-12 d-flex flex-column">
+                         <label className='inputLabel'>AADHAR ID</label>
+                          <input className='inputCmp w-100' type="text"
                           id="aadharId"
                           placeholder="Enter Aadhaar ID"
                           {...register("aadharId", { required: true })}
@@ -75,21 +67,23 @@ const KYCVerification = () => {
                           <p className="text-danger">Aadhaar ID is required</p>
                         )}
                       </div>
-
+                      <div className="mb-3 col-md-3 col-sm-12 d-flex justify-content-center pt-2 align-items-center">
                       <button
                         type="button"
-                        className="btn btn-secondary"
+                        className="btn btn-secondary mb-3 col-md-4 col-sm-12"
                         onClick={handleVerifyClick}
                         style={{
                           marginLeft: "10px",
                           width: "100px",
                           height: "40px",
-                          marginTop: "30px",
+                          marginTop: "40px",
                         }}
                       >
                         Verify
                       </button>
-                    </div>
+                      </div>
+                   </div>
+                   
                     {showOtp && (
                       <div className="mb-3">
                         <label htmlFor="otp" className="form-label">
@@ -188,21 +182,23 @@ const KYCVerification = () => {
                       Submit
                     </button>
                   </form>
-                  <div>
+               
+                </div>
+              </div>
+              <div className="col-sm-12 col-md-6">
                     <img
                       src="/kyc.jpg"
                       style={{
-                        width: "400px",
+                        width: "100%",
                         height: "300px",
-                        marginLeft:'50px'
                       }}
                     />
-                  </div>
-                </div>
               </div>
-            </div>
-          </div>
-        </div>
+              </Card.Body>
+              </Card>
+              </Row>
+             
+            </Container>
       </Layout>
     </>
   );
