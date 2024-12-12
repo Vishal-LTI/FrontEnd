@@ -16,6 +16,7 @@
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 10px;
+    text-align: left;
 }
 .inputCmp:focus, .inputCmp:hover{
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
