@@ -1,30 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import PrimaryButton from "../../Atoms/PrimaryButton";
-import { registerUser, sendOtp } from "../../features/auth/authActions";
+import { useRegisterMutation, useSendOtpMutation, useValidateOtpMutation } from "../../services/authServices";
 
 const Register = () => {
   const [showOtp, setShowOtp] = useState(false);
   const [btnDisable, setBtnDisable] = useState(true);
-  const { loading, error, success, otpSent } = useSelector(
-    (state) => state.auth
-  );
   const [customError, setCustomError] = useState(null);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {
-    register,
-    watch,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  useEffect(() => {
-    // Redirect user to profile page if registration was successful
-    if (success) navigate("/login");
-  }, [navigate, success]);
+  const { register, watch, handleSubmit, formState: { errors } } = useForm();
+  
+  const [registerUser, { isLoading: isRegisterLoading, error: registerError }] = useRegisterMutation();
+  const [sendOtp, { isLoading: isOtpLoading, error: otpError }] = useSendOtpMutation();
+  const [validateOtp, { isLoading: isValidateOtpLoading, error: validateOtpError }] = useValidateOtpMutation();
 
   const onSubmit = async (data) => {
     // Check if passwords match
@@ -32,21 +21,39 @@ const Register = () => {
       setCustomError("Passwords do not match");
       return;
     }
-    if (data.otp.length < 6) {
-      setCustomError("OTP must be 6 digits");
+    if (data.otp.length < 4) {
+      setCustomError("OTP must be 4 digits");
+      return;
     }
     // Transform email string to lowercase to avoid case sensitivity issues in login
     data.email = data.email.toLowerCase();
 
-    // Dispatch registration action with OTP
-    dispatch(registerUser(data));
+    try {
+      // Validate OTP
+      await validateOtp({ email: data.email, otp: data.otp }).unwrap();
+      // Register user
+      data.firstName = data.name.split(' ')[0];
+      data.lastName = data.name.split(' ')[1];
+      data.mobNumber = data.contactNo;
+      console.log(data);
+      await registerUser(data).unwrap();
+      // Redirect to login page on success
+      navigate("/login");
+    } catch (err) {
+      setCustomError(err.message || "Failed to register");
+    }
   };
 
-  const handleVerifyClick = () => {
+  const handleVerifyClick = async () => {
     const email = watch("email").toLowerCase();
-    dispatch(sendOtp({ email }));
-    setShowOtp(true);
-    setBtnDisable(false);
+    try {
+      // Send OTP to the provided email
+      await sendOtp({ email }).unwrap();
+      setShowOtp(true);
+      setBtnDisable(false);
+    } catch (err) {
+      setCustomError("Failed to send OTP");
+    }
   };
 
   return (
@@ -54,29 +61,15 @@ const Register = () => {
       <div className="register-component">
         <img src="./register.jpg" alt="register" style={{ width: "500px" }} />
       </div>
-      <div
-        className=""
-        style={{ maxWidth: "500px", marginTop: "80px", marginLeft: "150px" }}
-      >
+      <div style={{ maxWidth: "500px", marginTop: "80px", marginLeft: "150px" }}>
         <div className="card shadow">
-          <h5
-            className="card-title text-center"
-            style={{
-              color: "#ffffff",
-              background: "#db0011",
-              borderRadius: "5px 5px 0px 0px",
-              padding: "10px",
-            }}
-          >
+          <h5 className="card-title text-center" style={{ color: "#ffffff", background: "#db0011", borderRadius: "5px 5px 0px 0px", padding: "10px" }}>
             Register
           </h5>
           <div className="card-body">
             <form onSubmit={handleSubmit(onSubmit)} className="row">
-          
               <div className="col-md-6 mb-3">
-                <label htmlFor="name" className="form-label">
-                  Name <span style={{fontSize:"10px"}}>(as per Aadhar)</span>
-                </label>
+                <label htmlFor="name" className="form-label">Name <span style={{ fontSize: "10px" }}>(as per Aadhar)</span></label>
                 <input
                   type="text"
                   className="form-control"
@@ -90,14 +83,10 @@ const Register = () => {
                     },
                   })}
                 />
-                {errors.name && (
-                  <p className="text-danger">{errors.name.message}</p>
-                )}
+                {errors.name && <p className="text-danger">{errors.name.message}</p>}
               </div>
               <div className="col-md-6 mb-3">
-                <label htmlFor="contactNo" className="form-label">
-                  Contact No
-                </label>
+                <label htmlFor="contactNo" className="form-label">Contact No</label>
                 <input
                   type="text"
                   className="form-control"
@@ -107,19 +96,14 @@ const Register = () => {
                     required: true,
                     pattern: {
                       value: /[0-9]{10}/,
-                      message:
-                        "Contact number must be 10 digits and only contain numbers.",
+                      message: "Contact number must be 10 digits and only contain numbers.",
                     },
                   })}
                 />
-                {errors.contactNo && (
-                  <p className="text-danger">{errors.contactNo.message}</p>
-                )}
+                {errors.contactNo && <p className="text-danger">{errors.contactNo.message}</p>}
               </div>
               <div className="col-md-6 mb-3">
-                <label htmlFor="password" className="form-label">
-                  Password
-                </label>
+                <label htmlFor="password" className="form-label">Password</label>
                 <input
                   type="password"
                   className="form-control"
@@ -127,14 +111,10 @@ const Register = () => {
                   placeholder="Enter Password"
                   {...register("password", { required: true })}
                 />
-                {errors.password && (
-                  <p className="text-danger">Password is required</p>
-                )}
+                {errors.password && <p className="text-danger">Password is required</p>}
               </div>
               <div className="col-md-6 mb-3">
-                <label htmlFor="confirmPassword" className="form-label">
-                  Confirm Password
-                </label>
+                <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
                 <input
                   type="password"
                   className="form-control"
@@ -142,23 +122,13 @@ const Register = () => {
                   placeholder="Enter Confirm Password"
                   {...register("confirmPassword", {
                     required: true,
-                    validate: (val) => {
-                      if (watch("password") !== val) {
-                        return "Passwords do not match";
-                      }
-                    },
+                    validate: (val) => watch("password") === val || "Passwords do not match",
                   })}
                 />
-                {errors.confirmPassword && (
-                  <p className="text-danger">
-                    {errors.confirmPassword.message}
-                  </p>
-                )}
+                {errors.confirmPassword && <p className="text-danger">{errors.confirmPassword.message}</p>}
               </div>
               <div className="col-md-12 mb-3">
-                <label htmlFor="email" className="form-label">
-                  Email
-                </label>
+                <label htmlFor="email" className="form-label">Email</label>
                 <div className="input-group">
                   <input
                     type="email"
@@ -168,30 +138,24 @@ const Register = () => {
                     {...register("email", {
                       required: true,
                       pattern: {
-                        value:
-                          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
                         message: "Please enter a valid email",
                       },
                     })}
                   />
                   <PrimaryButton
                     type="button"
-                    label={otpSent ? "OTP Sent" : "Verify"}
+                    label={isOtpLoading ? "Sending OTP..." : "Verify"}
                     btnColor="#db0011"
                     width="100px"
                     onClick={handleVerifyClick}
-                    disabled={otpSent}
                   />
                 </div>
-                {errors.email && (
-                  <p className="text-danger">{errors.email.message}</p>
-                )}
+                {errors.email && <p className="text-danger">{errors.email.message}</p>}
               </div>
               {showOtp && (
                 <div className="col-md-12 mb-3">
-                  <label htmlFor="otp" className="form-label">
-                    OTP
-                  </label>
+                  <label htmlFor="otp" className="form-label">OTP</label>
                   <input
                     type="text"
                     maxLength="6"
@@ -205,19 +169,20 @@ const Register = () => {
               )}
               <div className="col-md-12 mb-3">
                 <PrimaryButton
-                  disabled={btnDisable}
+                  disabled={btnDisable || isRegisterLoading}
                   type="submit"
-                  label={loading ? "Sending Data..." : "Register"}
+                  label={isRegisterLoading ? "Sending Data..." : "Register"}
                   btnColor="#db0011"
                 />
               </div>
-{/* 
-              {error && <p className="text-danger">{error}</p>} */}
+              {registerError && <p className="text-danger">{registerError.message}</p>}
+              {otpError && <p className="text-danger">{otpError.message}</p>}
+              {validateOtpError && <p className="text-danger">{validateOtpError.message}</p>}
               {customError && <p className="text-danger">{customError}</p>}
             </form>
             <div className="mt-3 text-center">
               <p>
-                Already have an account?
+                Already have an account? 
                 <Link to="/login" style={{ color: "#db0011" }}>
                   Login here
                 </Link>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useApplyLoanMutation } from "../../services/loan/loanApi"; // Import the useApplyLoanMutation hook
+import { useApplyLoanMutation } from "../../services/loanServices"; // Import the useApplyLoanMutation hook
 import Layout from "../../Components/Layout";
 import FormInput from "../../Components/FormInput";
 

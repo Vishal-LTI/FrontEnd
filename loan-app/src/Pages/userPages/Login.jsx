@@ -1,35 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "../../Styles/login.css"; // Assuming you have some custom styles
 import PrimaryButton from "../../Atoms/PrimaryButton";
-import { useDispatch, useSelector } from "react-redux";
-import { userLogin } from "../../features/auth/authActions";
+import { useLoginMutation } from "../../services/authServices";
 
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const { loading, userInfo, error, success } = useSelector(
-    (state) => state.auth
-  );
-  const dispatch = useDispatch();
+  const [login, { isLoading, isSuccess, error, data: userInfo }] = useLoginMutation();
   const navigate = useNavigate();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [customError, setCustomError] = useState(null);
 
   useEffect(() => {
-    // redirect authenticated user to profile screen
-    if (success && userInfo) {
-      navigate("/view-profile");
+    // Redirect authenticated user to profile screen
+    if (isSuccess && userInfo) {
+    
+      navigate("/dashboard");
     }
-  }, [navigate, userInfo, success]);
+  }, [navigate, isSuccess, userInfo]);
 
-  const onSubmit = (data) => {
-    console.log("Login Data: ", data);
-    // Dispatch login action
-    dispatch(userLogin(data));
+  const onSubmit = async (data) => {
+    try {
+      await login(data).unwrap();
+    } catch (err) {
+      setCustomError(err.message || "Failed to login");
+    }
   };
 
   return (
@@ -39,7 +34,7 @@ const Login = () => {
           src="./login.jpg"
           alt="img"
           className="login-img"
-          style={{ width: "550px", margin:"0px 50px" }}
+          style={{ width: "550px", margin: "0px 50px" }}
         />
         <div className="register-component">
           <div className="container d-flex align-items-center justify-content-center min-vh-100">
@@ -54,7 +49,8 @@ const Login = () => {
                       Login
                     </h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                      {error && <p className="text-danger">{error}</p>}
+                      {error && <p className="text-danger">{error.message}</p>}
+                      {customError && <p className="text-danger">{customError}</p>}
                       <div className="mb-3">
                         <label htmlFor="userName" className="form-label">
                           Email ID
@@ -67,8 +63,7 @@ const Login = () => {
                           {...register("userName", {
                             required: true,
                             pattern: {
-                              value:
-                                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                              value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                               message: "Please enter a valid Email Id",
                             },
                           })}
@@ -94,7 +89,7 @@ const Login = () => {
                       </div>
                       <PrimaryButton
                         type="submit"
-                        label={loading ? "Logging In..." : "Login"}
+                        label={isLoading ? "Logging In..." : "Login"}
                         btnColor="#db0011"
                       />
                     </form>
