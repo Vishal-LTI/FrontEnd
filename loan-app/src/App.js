@@ -103,16 +103,16 @@ function App() {
         />
 
         {/* profile routes */}
-        <Route path="/view-profile" element={<UserProfileDetails />} />
+        <Route path="/view-profile/:id" element={<UserProfileDetails />} />
         <Route element={<ProtectedRoute />}>
         
         </Route>
 
         {/* loan routes */}
-        <Route path="/apply-loan" element={<ApplyLoan />} />
-        <Route path="/view-loan-details" element={<ViewLoanDetails />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/kyc" element={<KYCVerification />} />
+        <Route path="/apply-loan/:id" element={<ApplyLoan />} />
+        <Route path="/view-loan-details/:id" element={<ViewLoanDetails />} />
+        <Route path="/dashboard/:id" element={<Dashboard />} />
+        <Route path="/kyc/:id" element={<KYCVerification />} />
 
        
         

@@ -4,18 +4,30 @@ import { useForm } from "react-hook-form";
 import "../../Styles/login.css"; // Assuming you have some custom styles
 import PrimaryButton from "../../Atoms/PrimaryButton";
 import { useLoginMutation } from "../../services/authServices";
+import {jwtDecode} from "jwt-decode";
+
 
 const Login = () => {
-  const [login, { isLoading, isSuccess, error, data: userInfo }] = useLoginMutation();
+  const [login, { isLoading, isSuccess, error, data: userInfo }] =
+    useLoginMutation();
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const [customError, setCustomError] = useState(null);
 
   useEffect(() => {
-    // Redirect authenticated user to profile screen
     if (isSuccess && userInfo) {
-    
-      navigate("/dashboard");
+      localStorage.setItem("authToken", userInfo.jwtToken);
+      const decodedToken = jwtDecode(userInfo.jwtToken);
+      const { fullName, userId, username, role } = decodedToken;
+      localStorage.setItem("name", fullName);
+      localStorage.setItem("userId", userId);
+      localStorage.setItem("username", username);
+      localStorage.setItem("userRole", role);
+      navigate(`/dashboard/${userId}`);
     }
   }, [navigate, isSuccess, userInfo]);
 
@@ -50,7 +62,9 @@ const Login = () => {
                     </h3>
                     <form onSubmit={handleSubmit(onSubmit)}>
                       {error && <p className="text-danger">{error.message}</p>}
-                      {customError && <p className="text-danger">{customError}</p>}
+                      {customError && (
+                        <p className="text-danger">{customError}</p>
+                      )}
                       <div className="mb-3">
                         <label htmlFor="userName" className="form-label">
                           Email ID
@@ -63,13 +77,16 @@ const Login = () => {
                           {...register("userName", {
                             required: true,
                             pattern: {
-                              value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                              value:
+                                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                               message: "Please enter a valid Email Id",
                             },
                           })}
                         />
                         {errors.userName && (
-                          <p className="text-danger">{errors.userName.message}</p>
+                          <p className="text-danger">
+                            {errors.userName.message}
+                          </p>
                         )}
                       </div>
                       <div className="mb-3">

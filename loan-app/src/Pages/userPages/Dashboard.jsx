@@ -5,10 +5,10 @@ import TableComponent from "../../Components/TableComponent";
 import DonutChartComponent from "../../Atoms/DonutChart";
 import { setLoginStatus } from "../../features/auth/authSlice";
 import { useDispatch } from "react-redux";
-
-const Dashboard = () => {
+import { useParams } from "react-router-dom";
+const Dashboard = ({ userId }) => {
   const dispatch = useDispatch();
-
+  const { id } = useParams();
   useEffect(() => {
     dispatch(setLoginStatus());
   }, [dispatch]);
@@ -55,7 +55,7 @@ const Dashboard = () => {
     {
       title: "Total Loan Amount",
       value: `₹${loanDetails.totalLoanAmount.toFixed(0)}`,
-      imgUrl: './Kyc.jpg'
+      imgUrl: "./Kyc.jpg",
     },
     {
       title: "Outstanding Amount",
@@ -113,7 +113,10 @@ const Dashboard = () => {
           <div className="col-12">
             <div className="d-flex flex-column flex-md-row">
               <div className="card ms-md-4 mt-3 mt-md-0 w-100">
-              <DonutChartComponent data={chartData} title="Principal vs Interest" />
+                <DonutChartComponent
+                  data={chartData}
+                  title="Principal vs Interest"
+                />
               </div>
               <div className="card ms-md-4 mt-3 mt-md-0 w-100">
                 <div className="card-body">

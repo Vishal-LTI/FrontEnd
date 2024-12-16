@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../Styles/sidebar.css';
+import { useParams } from 'react-router-dom';
 
 const Sidebar = ({isAdmin = false}) => {
   const location = useLocation();
@@ -9,6 +10,7 @@ const Sidebar = ({isAdmin = false}) => {
     console.log(!isSideBarVisible)
     setSidebarVisible(!isSideBarVisible)
   }
+  const { id } = useParams();
   return (
     <div>
       <button 
@@ -23,24 +25,24 @@ const Sidebar = ({isAdmin = false}) => {
       <div className="sidebar bg-light p-3">
       <div className="text-center mb-3">
         <img src="./Media.png" alt="Profile" className="profile-photo" />
-        <h4 className="mt-2">Vishal Gholkar</h4>
-        <p>Age: 26</p>
-        <p>Welcome, Vishal!</p>
+        <h4 className="mt-2">{localStorage.getItem("name")}</h4>
+        <p>{localStorage.getItem("username")}</p>
+        <p>Welcome, {localStorage.getItem("name").split(' ')[0]}!</p>
         <hr />
       </div>
       {!isAdmin ? (
       <nav className="nav flex-column">
         <Link className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} to="/">
         <i className='bi bi-house-fill'></i> Home</Link>
-        <Link className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`} to="/dashboard">
+        <Link className={`nav-link ${location.pathname === '/dashboard' ? 'active' : ''}`} to={`/dashboard/${id}`}>
         <i className='bi bi-grid'></i> Dashboard</Link>
-        <Link className={`nav-link ${location.pathname === '/view-profile' ? 'active' : ''}`} to="/view-profile">
+        <Link className={`nav-link ${location.pathname === '/view-profile' ? 'active' : ''}`} to={`/view-profile/${id}`}>
         <i className='bi bi-person'></i> Profile</Link>
-        <Link className={`nav-link ${location.pathname === '/apply-loan' ? 'active' : ''}`} to="/apply-loan">
+        <Link className={`nav-link ${location.pathname === '/apply-loan' ? 'active' : ''}`} to={`/apply-loan/${id}`}>
         <i className='bi bi-pencil-square'></i> Apply for Loan</Link>
-        <Link className={`nav-link ${location.pathname === '/view-loan-details' ? 'active' : ''}`} to="/view-loan-details">
+        <Link className={`nav-link ${location.pathname === '/view-loan-details' ? 'active' : ''}`} to={`/view-loan-details/${id}`}>
         <i className='bi bi-file-richtext'></i> Loan Details</Link>
-        <Link className={`nav-link ${location.pathname === '/kyc' ? 'active' : ''}`} to="/kyc">
+        <Link className={`nav-link ${location.pathname === '/kyc' ? 'active' : ''}`} to="/kyc/:id">
         <i className='bi bi-check-circle'></i> KYC Verification</Link>
       </nav>
       ):

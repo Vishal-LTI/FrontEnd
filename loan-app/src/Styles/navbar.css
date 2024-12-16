@@ -1,6 +1,12 @@
 .nav-bg{
     background-color: #db0011;
 }
+.nav-bg .dropdown-toggle::after { 
+    color: white !important; 
+} 
+.nav-title { 
+    color: white !important;
+}
 
 .navbar .nav-title{
     color: #ffffff !important;
