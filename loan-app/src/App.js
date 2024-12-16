@@ -18,6 +18,9 @@ import AdminDashboard from "./Pages/adminPages/AdminDashboard";
 import AdminLogin from "./Pages/adminPages/AdminLogin";
 import LoanDetails from "./Pages/adminPages/LoanDetails";
 import LoanApplications from "./Pages/adminPages/LoanApplications";
+import KYCApplications from "./Pages/adminPages/KYCApplications";
+import KYCVerificationDetails from "./Pages/adminPages/KYCAdminVerificationDetails";
+import UserProfileReadOnly from "./Pages/adminPages/readOnly/userProfileReadOnly";
 import data from './Constant/data.json'
 function App() {
   useEffect(() => {
@@ -32,6 +35,9 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashboard/>} />
         <Route path="/admin/loan-details" element={<LoanDetails />} />
         <Route path="/admin/loan-applications" element={<LoanApplications />} />
+        <Route path="/admin/kyc-applications" element={<KYCApplications />} />
+        <Route path="/admin/kyc-verification-details" element={<KYCVerificationDetails />} />
+        <Route path="/admin/readonly/user-Profile" element={<UserProfileReadOnly />} />
        
         {/* login routes */}
         <Route exact path="/" element={<Home />} />

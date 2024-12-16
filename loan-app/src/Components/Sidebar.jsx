@@ -50,9 +50,9 @@ const Sidebar = ({isAdmin = false}) => {
         <i className='bi bi-house-fill'></i> Home</Link>
         <Link className={`nav-link ${location.pathname === '/admin/dashboard' ? 'active' : ''}`} to="/admin/dashboard">
         <i className='bi bi-grid'></i> Admin Dashboard</Link>
-        <Link className={`nav-link ${location.pathname === '/loan-applications' ? 'active' : ''}`} to="/loan-applications">
+        <Link className={`nav-link ${location.pathname === '/admin/loan-applications' ? 'active' : ''}`} to="/admin/loan-applications">
         <i className='bi bi-pencil-square'></i>Loan Applications</Link>
-        <Link className={`nav-link ${location.pathname === '/kyc-applications' ? 'active' : ''}`} to="/kyc-applications">
+        <Link className={`nav-link ${location.pathname === '/admin/kyc-applications' ? 'active' : ''}`} to="/admin/kyc-applications">
         <i className='bi bi-check-circle'></i> KYC Verification</Link>
 
       </nav>
