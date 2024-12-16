@@ -10,8 +10,6 @@ const NavbarMenu = ({isUser=true}) => {
   const navigate = useNavigate();
   const { userInfo, userToken, isLoggedIn } = useSelector((state) => state.auth);
   const role= userInfo?.role;
-//const isLoggedIn = true//;userToken !== null && userToken !== "" && role=='user';
-//console.log('login', isLoggedIn)
 const userInitials = "U";
 const handleLogout = () => {
   dispatch(logout());
@@ -35,7 +33,14 @@ const handleLogout = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="d-flex justify-content-end">
           <Nav className="align-items-center">
-            <NavDropdown title={<span className="profile-initials">{userInitials}</span>} id="basic-nav-dropdown" className="nav-link nav-title justify-content-end">
+            <NavDropdown title={
+              <div style={{ display: 'inline-flex', alignItems: 'center' }}>  
+              <span className="profile-initials ms-1"> {localStorage.getItem("name").split('')[0]} 
+              </span>
+              <span className="nav-title">Hello,{localStorage.getItem("name").split(' ')[0]}!</span> 
+              </div>
+            } 
+            id="basic-nav-dropdown" className="nav-link nav-title justify-content-end">
               <NavDropdown.Item href="view-profile">Profile</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Edit Profile</NavDropdown.Item>
               <NavDropdown.Divider />
