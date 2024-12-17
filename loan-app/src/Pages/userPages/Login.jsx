@@ -49,7 +49,7 @@ const Login = () => {
           style={{ width: "550px", margin: "0px 50px" }}
         />
         <div className="register-component">
-          <div className="container d-flex align-items-center justify-content-center min-vh-100">
+          <div className="container d-flex align-items-center justify-content-center table-wrap">
             <div className="row w-100">
               <div className="col-md-12 offset-md-1">
                 <div className="card shadow">
