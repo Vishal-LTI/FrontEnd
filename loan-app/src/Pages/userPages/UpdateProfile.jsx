@@ -31,6 +31,7 @@ const UpdateProfilePage = () => {
     } else if (section === "loan") {
       setLoanDetails({ ...loanDetails, [name]: value });
     }
+    console.log(userProfile)
   };
 
   const handleImageUpload = (e) => {
