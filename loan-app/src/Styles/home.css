@@ -9,6 +9,10 @@
   height: auto;
 }
 
+.table-wrap {
+  min-height: 100vh !important;
+}
+
 .register-component {
   position: absolute;
   top: 50%;
@@ -142,6 +146,31 @@ h4 {
   box-shadow: none;
 }
 
+@media(max-width: 1200px) { 
+
+  .table-wrap {
+    min-height: 0 !important;
+}
+  .register-comp-wrap {
+    max-width: 100% !important;
+    margin-top: 0 !important;
+    margin-left: 4rem !important;
+    margin-right: 4rem;
+  }
+  .register-component {
+    position: static;
+    top: 0;
+    right: 0;
+    transform: none;
+    margin: 0 auto;
+  }
+  .banner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 @media(max-width: 1100px) {
   .f-wrap { 
     flex-wrap: wrap;
@@ -172,5 +201,14 @@ h4 {
 }
 .container .card {
   margin-bottom: 1rem;
+}
+.register-component {
+  width: 100%;
+}
+.register-component img {
+    width: 100% !important;
+}
+.banner-container img {
+  width: 100% !important;
 }
 }

@@ -61,7 +61,7 @@ const Register = () => {
       <div className="register-component">
         <img src="./register.jpg" alt="register" style={{ width: "500px" }} />
       </div>
-      <div style={{ maxWidth: "500px", marginTop: "80px", marginLeft: "150px" }}>
+      <div className="register-comp-wrap" style={{ maxWidth: "500px", marginTop: "80px", marginLeft: "150px" }}>
         <div className="card shadow">
           <h5 className="card-title text-center" style={{ color: "#ffffff", background: "#db0011", borderRadius: "5px 5px 0px 0px", padding: "10px" }}>
             Register
