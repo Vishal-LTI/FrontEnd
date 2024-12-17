@@ -7,7 +7,7 @@ export const userDetailsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: backendURL,
     prepareHeaders: (headers, { getState }) => {
-      const token = getState().auth.userToken;
+      const token = localStorage.getItem("authToken");
       console.log(token)
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
@@ -21,13 +21,14 @@ export const userDetailsApi = createApi({
     getUserDetails: builder.mutation({
       query: (userId) => `/User/getUser/${userId}`,
       method: 'GET',
-      mode: "cors",
+      transformResponse: (response) => response.data
     }),
     updateUserDetails: builder.mutation({
         query: (userData) => ({
           url: `/User/update/${userData.userId}`,
           method: 'PUT',
           body: userData,
+          transformResponse: (response) => response.data
         }),
       }),
   }),

@@ -10,7 +10,7 @@ export const loanApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: backendURL,
     prepareHeaders: (headers) => {
-      const token = localStorage.getItem("userToken"); // Adjust how you retrieve the token as needed
+      const token = localStorage.getItem("authToken");
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }
