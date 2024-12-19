@@ -103,9 +103,6 @@ const UserProfileDetails = () => {
                         >
                           <i className="bi bi-pencil"></i>
                         </button>
-                        <button className="btn btn-danger text-white">
-                          <i className="bi bi-trash"></i>
-                        </button>
                       </div>
                     </div>
                     {showEditProfile && (
@@ -155,9 +152,6 @@ const UserProfileDetails = () => {
                           onClick={handleClick}
                         >
                           <i className="bi bi-pencil"></i>
-                        </button>
-                        <button className="btn btn-danger text-white">
-                          <i className="bi bi-trash"></i>
                         </button>
                       </div>
                     </div>
@@ -255,9 +249,6 @@ const UserProfileDetails = () => {
                         >
                           <i className="bi bi-pencil"></i>
                         </button>
-                        <button className="btn btn-danger text-white">
-                          <i className="bi bi-trash"></i>
-                        </button>
                       </div>
                     </div>
                     {showEditProfile && (
@@ -307,9 +298,6 @@ const UserProfileDetails = () => {
                           onClick={handleClick}
                         >
                           <i className="bi bi-pencil"></i>
-                        </button>
-                        <button className="btn btn-danger text-white">
-                          <i className="bi bi-trash"></i>
                         </button>
                       </div>
                     </div>
